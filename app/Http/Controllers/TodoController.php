@@ -14,12 +14,13 @@ class TodoController extends Controller
      */
     public function index()
     {
-        return response()->json(['todos' => Todo::latest('id')->get()]);
+        $this->data['todos'] = Todo::where('ip_address', request()->ip())->latest('id')->get();
+        return response()->json($this->data);
     }
     
     /**
      * store
-     *
+     * 
      * @param  Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
@@ -32,9 +33,10 @@ class TodoController extends Controller
         ]);
         
         Todo::create([
-            'title' => $request->input('title'),
-            'note' => $request->input('note'),
-            'comment' => $request->input('comment'),
+            'ip_address' => $request->ip(),
+            'title'      => $request->input('title'),
+            'note'       => $request->input('note'),
+            'comment'    => $request->input('comment'),
         ]);
 
         return response()->json(['success' => 'Todo saved.']);
@@ -48,7 +50,8 @@ class TodoController extends Controller
      */
     public function show($id)
     {
-        return response()->json(['todo' => Todo::find($id)]);
+        $this->data['todo'] = Todo::where('ip_address', request()->ip())->where('id', $id)->first();
+        return response()->json($this->data);
     }
     
     /**
@@ -66,7 +69,7 @@ class TodoController extends Controller
             'comment' => 'nullable|string',
         ]);
         
-        $todo = Todo::find($id);
+        $todo = Todo::where('ip_address', request()->ip())->where('id', $id)->first();
         
         if($todo) {
             $todo->update([
@@ -89,7 +92,7 @@ class TodoController extends Controller
      */
     public function destroy($id)
     {
-        $todo = Todo::find($id);
+        $todo = Todo::where('ip_address', request()->ip())->where('id', $id)->first();
         
         if($todo) {
             $todo->delete();

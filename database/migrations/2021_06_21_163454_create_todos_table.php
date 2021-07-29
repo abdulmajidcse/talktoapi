@@ -15,6 +15,7 @@ class CreateTodosTable extends Migration
     {
         Schema::create('todos', function (Blueprint $table) {
             $table->id();
+            $table->ipAddress('ip_address');
             $table->string('title');
             $table->text('note');
             $table->string('comment')->nullable();
