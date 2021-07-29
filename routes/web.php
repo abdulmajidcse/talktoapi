@@ -2,11 +2,6 @@
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
-// APP_KEY generate
-// $router->get('app_key', function() {
-//     return \Illuminate\Support\Str::random(32);
-// });
-
 $router->get('/', 'HomeController@index');
 
 $router->get('todos', 'TodoController@index');
@@ -26,4 +21,10 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
     $router->get('user', 'AuthController@user');
     $router->post('refresh', 'AuthController@refresh');
     $router->post('logout', 'AuthController@logout');
+
+    $router->get('categories', 'CategoryController@index');
+    $router->post('categories', 'CategoryController@store');
+    $router->get('categories/{id}', 'CategoryController@show');
+    $router->put('categories/{id}', 'CategoryController@update');
+    $router->delete('categories/{id}', 'CategoryController@destroy');
 });
