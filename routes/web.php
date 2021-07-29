@@ -21,6 +21,7 @@ $router->delete('todos/{id}', 'TodoController@destroy');
  */
 $router->post('register', 'AuthController@register');
 $router->post('login', 'AuthController@login');
+
 $router->group(['middleware' => 'auth'], function () use ($router) {
     $router->get('user', 'AuthController@user');
     $router->post('refresh', 'AuthController@refresh');
