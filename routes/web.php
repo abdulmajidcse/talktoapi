@@ -21,10 +21,16 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
     $router->get('user', 'AuthController@user');
     $router->post('refresh', 'AuthController@refresh');
     $router->post('logout', 'AuthController@logout');
-
+    // category crud routes
     $router->get('categories', 'CategoryController@index');
     $router->post('categories', 'CategoryController@store');
     $router->get('categories/{id}', 'CategoryController@show');
     $router->put('categories/{id}', 'CategoryController@update');
     $router->delete('categories/{id}', 'CategoryController@destroy');
+    // post crud routes
+    $router->get('posts', 'PostController@index');
+    $router->post('posts', 'PostController@store');
+    $router->get('posts/{id}', 'PostController@show');
+    $router->put('posts/{id}', 'PostController@update');
+    $router->delete('posts/{id}', 'PostController@destroy');
 });
