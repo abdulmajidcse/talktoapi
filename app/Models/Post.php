@@ -5,6 +5,7 @@ namespace App\Models;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Storage;
 
 class Post extends Model
 {
@@ -24,7 +25,23 @@ class Post extends Model
      */
     protected $hidden = [
         'user_id',
+        'category_id',
     ];
+
+    public function format()
+    {
+
+        $attributes = [
+            'id'         => $this->id,
+            'title'      => $this->title,
+            'image'      => Storage::url($this->image),
+            'content'    => $this->content,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+        ];
+
+        return $attributes;
+    }
 
     /**
      * Prepare a date for array / JSON serialization.

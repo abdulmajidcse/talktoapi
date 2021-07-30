@@ -17,7 +17,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $this->data['posts'] = Post::where('user_id', auth()->id())->with('category')->latest('id')->get();
+        $this->data['posts'] = Post::where('user_id', auth()->id())->with('category')->latest('id')->get()->map->format();
         return response()->json($this->data);
     }
     
@@ -77,7 +77,11 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $this->data['post'] = Post::where('user_id', auth()->id())->where('id', $id)->with('category')->first();
+        $post = Post::where('user_id', auth()->id())->where('id', $id)->with('category')->first();
+        $this->data['post'] = $post;
+        if ($post) {
+            $this->data['post'] = $post->format();
+        }
         return response()->json($this->data);
     }
     
