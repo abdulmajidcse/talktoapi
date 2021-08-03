@@ -1,6 +1,6 @@
 <!-- todo -->
 <section id="authentication" class="border-top border-primary">
-    <div class="container mt-3">
+    <div class="container" style="padding-top: 55px;">
         <h3>Authentication</h3>
         <p>For Authentication you have to create an account, then you can login. You can't access Category and Post without authentication.</p>
         <h4>API Request:</h4>

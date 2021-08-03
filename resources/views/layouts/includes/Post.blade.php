@@ -1,7 +1,7 @@
 <!-- todo -->
-<section id="todo" class="border-top border-primary">
+<section id="post" class="border-top border-primary">
     <div class="container" style="padding-top: 55px;">
-        <h3>Todo List</h3>
+        <h3>Blog Post</h3>
         <p>Here is an example of Todo List. Without Authentication, you can complete a crud operation.</p>
         <h4>API Request:</h4>
         <div class="table-responsive">
