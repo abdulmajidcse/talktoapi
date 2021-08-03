@@ -41,6 +41,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#post">Post</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link rounded bg-primary text-light" href="https://github.com/abdulmajidcse/talktoapi" target="_blank">Github</a>
+                    </li>
                 </ul>
                 </div>
             </div>
