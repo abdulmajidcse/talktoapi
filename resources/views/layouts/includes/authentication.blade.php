@@ -1,8 +1,8 @@
 <!-- todo -->
-<section id="todo" class="border-top border-primary">
+<section id="authentication" class="border-top border-primary">
     <div class="container mt-3">
-        <h3>Todo List</h3>
-        <p>Here is an example of Todo List. Without Authentication, you can complete a crud operation.</p>
+        <h3>Authentication</h3>
+        <p>For Authentication you have to create an account, then you can login. You can't access Category and Post without authentication.</p>
         <h4>API Request:</h4>
         <div class="table-responsive">
           <table class="table table-bordered">
@@ -18,124 +18,98 @@
                 <tr>
                   <th scope="row">1</th>
                   <td>
-                    <p>URI: {{ url('todos') }}</p>
-                    <span class="btn btn-sm btn-danger disabled">Example of JS Fetch:</span>
-
-<pre class="bg-dark text-light p-2 rounded">
-var requestOptions = {
-method: 'GET',
-redirect: 'follow'
-};
-
-fetch("{{ url('todos') }}", requestOptions)
-.then(response => response.text())
-.then(result => console.log(result))
-.catch(error => console.log('error', error));
-</pre>
-                  </td>
-                  <td>GET</td>
-                  <td>Get Todo List</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>
-                    <p>URI: {{ url('todos') }}</p>
+                    <p>URI: {{ url('register') }}</p>
                     <span class="btn btn-sm btn-danger disabled">Example of JS Fetch:</span>
 
 <pre class="bg-dark text-light p-2 rounded">
 var formdata = new FormData();
-formdata.append("title", "This is a note.");
-formdata.append("note", "Today note details");
-formdata.append("comment", "not required.");
+formdata.append("name", "Abdul Majid");
+formdata.append("email", "test@gmail.com");
+formdata.append("password", "12345678");
+formdata.append("password_confirmation", "12345678");
 
 var requestOptions = {
-method: 'POST',
-body: formdata,
-redirect: 'follow'
+  method: 'POST',
+  body: formdata,
+  redirect: 'follow'
 };
 
-fetch("{{ url('todos') }}", requestOptions)
+fetch("{{ url('register') }}", requestOptions)
 .then(response => response.text())
 .then(result => console.log(result))
 .catch(error => console.log('error', error));
 </pre>
                   </td>
                   <td>POST</td>
-                  <td>Create a Todo</td>
+                  <td>Create an account</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>
+                    <p>URI: {{ url('login') }}</p>
+                    <span class="btn btn-sm btn-danger disabled">Example of JS Fetch:</span>
+
+<pre class="bg-dark text-light p-2 rounded">
+var formdata = new FormData();
+formdata.append("email", "test@gmail.com");
+formdata.append("password", "12345678");
+
+var requestOptions = {
+  method: 'POST',
+  body: formdata,
+  redirect: 'follow'
+};
+
+fetch("{{ url('login') }}", requestOptions)
+.then(response => response.text())
+.then(result => console.log(result))
+.catch(error => console.log('error', error));
+</pre>
+                  </td>
+                  <td>POST</td>
+                  <td>Login your account and you can get an access_token. You have to use this access_token for authenticate Request.</td>
                 </tr>
                 <tr>
                   <th scope="row">3</th>
                   <td>
-                    <p>URI: {{ url('todos') . '/{id}' }}</p>
+                    <p>URI: {{ url('user?token={access_token}') }}</p>
                     <span class="btn btn-sm btn-danger disabled">Example of JS Fetch:</span>
 
 <pre class="bg-dark text-light p-2 rounded">
 var requestOptions = {
-method: 'GET',
-redirect: 'follow'
+  method: 'GET',
+  redirect: 'follow'
 };
 
-fetch("{{ url('todos/3') }}", requestOptions)
+fetch("{{ url('user?token={access_token}') }}", requestOptions)
 .then(response => response.text())
 .then(result => console.log(result))
 .catch(error => console.log('error', error));
 </pre>
                   </td>
                   <td>GET</td>
-                  <td>Get a Todo</td>
+                  <td>Get authenticate user information.</td>
                 </tr>
                 <tr>
                   <th scope="row">4</th>
                   <td>
-                    <p>URI: {{ url('todos') . '/{id}' }}</p>
+                    <p>URI: {{ url('logout?token={access_token}') }}</p>
                     <span class="btn btn-sm btn-danger disabled">Example of JS Fetch:</span>
 
 <pre class="bg-dark text-light p-2 rounded">
-var formdata = new FormData();
-formdata.append("title", "This is a note update.");
-formdata.append("note", "Today note details");
-formdata.append("comment", "not required.");
-formdata.append("_method", "put");
-
 var requestOptions = {
-method: 'POST',
-body: formdata,
-redirect: 'follow'
+  method: 'POST',
+  redirect: 'follow'
 };
 
-fetch("{{ url('todos/3') }}", requestOptions)
+fetch("{{ url('logout?token={access_token}') }}", requestOptions)
 .then(response => response.text())
 .then(result => console.log(result))
 .catch(error => console.log('error', error));
 </pre>
                   </td>
-                  <td>PUT</td>
-                  <td>Update a Todo</td>
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>
-                    <p>URI: {{ url('todos') . '/{id}' }}</p>
-                    <span class="btn btn-sm btn-danger disabled">Example of JS Fetch:</span>
-
-<pre class="bg-dark text-light p-2 rounded">
-var formdata = new FormData();
-formdata.append("_method", "delete");
-
-var requestOptions = {
-method: 'POST',
-body: formdata,
-redirect: 'follow'
-};
-
-fetch("{{ url('todos/3') }}", requestOptions)
-.then(response => response.text())
-.then(result => console.log(result))
-.catch(error => console.log('error', error));
-</pre>
-                  </td>
-                  <td>DELETE</td>
-                  <td>Delete a Todo</td>
+                  <td>POST</td>
+                  <td>Logout</td>
                 </tr>
               </tbody>
           </table>

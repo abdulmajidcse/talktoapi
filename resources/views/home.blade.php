@@ -12,4 +12,5 @@
   </section>
 
   @include('layouts.includes.todo')
+  @include('layouts.includes.authentication')
 @endsection
