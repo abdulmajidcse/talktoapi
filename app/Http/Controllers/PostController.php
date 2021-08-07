@@ -55,8 +55,8 @@ class PostController extends Controller
             $extension = $file->extension();
 
             // set file name and upload
-            $fileName     = Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME), '_') . '_'  . time() . '.' . $extension;
-            $uploadedPath = Storage::putFileAs('', $file, $fileName);
+            $fileName     = Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME), '_') . '_'  . Str::random(10) . '.' . $extension;
+            $uploadedPath = Storage::putFileAs(date('Y/m/d') . '/post', $file, $fileName);
             $post->image = $uploadedPath;
         }
 
@@ -122,8 +122,8 @@ class PostController extends Controller
                 $extension = $file->extension();
 
                 // set file name and upload
-                $fileName     = Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME), '_') . '_'  . time() . '.' . $extension;
-                $uploadedPath = Storage::putFileAs('', $file, $fileName);
+                $fileName     = Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME), '_') . '_'  . Str::random(10) . '.' . $extension;
+                $uploadedPath = Storage::putFileAs(date('Y/m/d') . '/post', $file, $fileName);
 
                 // delete old image if exist
                 $post->image && Storage::delete($post->image);
