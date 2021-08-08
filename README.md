@@ -1,24 +1,15 @@
-# Lumen PHP Framework
+# Welcome to TalkToAPI
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://img.shields.io/packagist/v/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+TalkToAPI is a Restfull API Application. It provide you real life API experience. If you are a Frontend Developer, welcome to here. You can create SPA Application (ReactJS, VueJS, AngularJS, SvelteJS App etc) using TalkToAPI service. It's an open source application. If you interest to contribute, welcome to here! If you get any errors or issues, please send me a [message](https://m.me/abdulmajidcse).
 
 ## Official Documentation
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+Documentation for the TalkToAPI can be found on the [TalkToAPI](https://talktoapi.abdulmajid.me/).
 
 ## Contributing
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Thank you for considering contributing to TalkToAPI!
 
-## Security Vulnerabilities
+## Thanks to Lumen Framework
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+A lot of thanks to [Lumen](https://lumen.laravel.com). Because TalkToAPI is using [Lumen](https://lumen.laravel.com).
