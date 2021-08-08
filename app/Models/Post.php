@@ -34,7 +34,7 @@ class Post extends Model
         $attributes = [
             'id'         => $this->id,
             'title'      => $this->title,
-            'image'      => Storage::url($this->image),
+            'image'      => Storage::exists($this->image) ? Storage::url($this->image) : null,
             'content'    => $this->content,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
