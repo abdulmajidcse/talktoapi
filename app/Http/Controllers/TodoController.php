@@ -90,15 +90,12 @@ class TodoController extends Controller
      * @param  mixed $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Todo $todo)
     {
-        $todo = Todo::where('ip_address', request()->ip())->where('id', $id)->first();
+        $todo->delete();
 
-        if ($todo) {
-            $todo->delete();
-            return response()->json(['success' => 'Todo deleted.']);
-        }
+        return successResponse([], "Data Deleted Successfully!", 202);
 
-        return response()->json(['error' => 'Todo not found.'], 404);
+        // return response()->json(['error' => 'Todo not found.'], 404);
     }
 }

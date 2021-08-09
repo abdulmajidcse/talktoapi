@@ -7,8 +7,8 @@ $router->get('/', 'HomeController@index');
 $router->get('todos', 'TodoController@index');
 $router->post('todos', 'TodoController@store');
 $router->get('todos/{todo}', 'TodoController@show');
-$router->put('todos/{id}', 'TodoController@update');
-$router->delete('todos/{id}', 'TodoController@destroy');
+$router->put('todos/{todo}', 'TodoController@update');
+$router->delete('todos/{todo}', 'TodoController@destroy');
 
 
 /**
