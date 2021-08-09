@@ -14,8 +14,9 @@ class TodoController extends Controller
      */
     public function index()
     {
-        $this->data['todos'] = Todo::where('ip_address', request()->ip())->latest('id')->get();
-        return response()->json($this->data);
+        $todos = Todo::whereIpAddress(request()->ip())->latest()->get();
+
+        return successResponse($todos);
     }
 
     /**
