@@ -14,7 +14,7 @@ class TodoController extends Controller
      */
     public function index()
     {
-        $todos = Todo::whereIpAddress(request()->ip())->latest()->get();
+        $todos = Todo::latest()->get();
 
         return successResponse($todos);
     }
@@ -49,10 +49,9 @@ class TodoController extends Controller
      * @param  mixed $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Todo $todo)
     {
-        $this->data['todo'] = Todo::where('ip_address', request()->ip())->where('id', $id)->first();
-        return response()->json($this->data);
+        return successResponse($todo);
     }
 
     /**
