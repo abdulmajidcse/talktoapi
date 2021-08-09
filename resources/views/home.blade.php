@@ -80,7 +80,7 @@
               <tr>
                 <th scope="row">1</th>
                 <td>
-                  <p>URI: {{ url('todos') }}</p>
+                  <p>URI: {{ url('api/todos') }}</p>
                   <span class="btn btn-sm btn-danger disabled">Example of JS Fetch:</span>
 
 <pre class="bg-dark text-light p-2 rounded">
@@ -89,7 +89,7 @@ method: 'GET',
 redirect: 'follow'
 };
 
-fetch("{{ url('todos') }}", requestOptions)
+fetch("{{ url('api/todos') }}", requestOptions)
 .then(response => response.text())
 .then(result => console.log(result))
 .catch(error => console.log('error', error));
@@ -101,7 +101,7 @@ fetch("{{ url('todos') }}", requestOptions)
               <tr>
                 <th scope="row">2</th>
                 <td>
-                  <p>URI: {{ url('todos') }}</p>
+                  <p>URI: {{ url('api/todos') }}</p>
                   <span class="btn btn-sm btn-danger disabled">Example of JS Fetch:</span>
 
 <pre class="bg-dark text-light p-2 rounded">
@@ -116,7 +116,7 @@ body: formdata,
 redirect: 'follow'
 };
 
-fetch("{{ url('todos') }}", requestOptions)
+fetch("{{ url('api/todos') }}", requestOptions)
 .then(response => response.text())
 .then(result => console.log(result))
 .catch(error => console.log('error', error));
@@ -128,7 +128,7 @@ fetch("{{ url('todos') }}", requestOptions)
               <tr>
                 <th scope="row">3</th>
                 <td>
-                  <p>URI: {{ url('todos') . '/{id}' }}</p>
+                  <p>URI: {{ url('api/todos') . '/{id}' }}</p>
                   <span class="btn btn-sm btn-danger disabled">Example of JS Fetch:</span>
 
 <pre class="bg-dark text-light p-2 rounded">
@@ -137,7 +137,7 @@ method: 'GET',
 redirect: 'follow'
 };
 
-fetch("{{ url('todos/3') }}", requestOptions)
+fetch("{{ url('api/todos/3') }}", requestOptions)
 .then(response => response.text())
 .then(result => console.log(result))
 .catch(error => console.log('error', error));
@@ -149,7 +149,7 @@ fetch("{{ url('todos/3') }}", requestOptions)
               <tr>
                 <th scope="row">4</th>
                 <td>
-                  <p>URI: {{ url('todos') . '/{id}' }}</p>
+                  <p>URI: {{ url('api/todos') . '/{id}' }}</p>
                   <span class="btn btn-sm btn-danger disabled">Example of JS Fetch:</span>
 
 <pre class="bg-dark text-light p-2 rounded">
@@ -165,7 +165,7 @@ body: formdata,
 redirect: 'follow'
 };
 
-fetch("{{ url('todos/3') }}", requestOptions)
+fetch("{{ url('api/todos/3') }}", requestOptions)
 .then(response => response.text())
 .then(result => console.log(result))
 .catch(error => console.log('error', error));
@@ -177,7 +177,7 @@ fetch("{{ url('todos/3') }}", requestOptions)
               <tr>
                 <th scope="row">5</th>
                 <td>
-                  <p>URI: {{ url('todos') . '/{id}' }}</p>
+                  <p>URI: {{ url('api/todos') . '/{id}' }}</p>
                   <span class="btn btn-sm btn-danger disabled">Example of JS Fetch:</span>
 
 <pre class="bg-dark text-light p-2 rounded">
@@ -190,7 +190,7 @@ body: formdata,
 redirect: 'follow'
 };
 
-fetch("{{ url('todos/3') }}", requestOptions)
+fetch("{{ url('api/todos/3') }}", requestOptions)
 .then(response => response.text())
 .then(result => console.log(result))
 .catch(error => console.log('error', error));
@@ -225,7 +225,7 @@ fetch("{{ url('todos/3') }}", requestOptions)
               <tr>
                 <th scope="row">1</th>
                 <td>
-                  <p>URI: {{ url('register') }}</p>
+                  <p>URI: {{ url('api/register') }}</p>
                   <span class="btn btn-sm btn-danger disabled">Example of JS Fetch:</span>
 
 <pre class="bg-dark text-light p-2 rounded">
@@ -241,7 +241,7 @@ body: formdata,
 redirect: 'follow'
 };
 
-fetch("{{ url('register') }}", requestOptions)
+fetch("{{ url('api/register') }}", requestOptions)
 .then(response => response.text())
 .then(result => console.log(result))
 .catch(error => console.log('error', error));
@@ -253,7 +253,7 @@ fetch("{{ url('register') }}", requestOptions)
               <tr>
                 <th scope="row">2</th>
                 <td>
-                  <p>URI: {{ url('login') }}</p>
+                  <p>URI: {{ url('api/login') }}</p>
                   <span class="btn btn-sm btn-danger disabled">Example of JS Fetch:</span>
 
 <pre class="bg-dark text-light p-2 rounded">
@@ -267,7 +267,7 @@ body: formdata,
 redirect: 'follow'
 };
 
-fetch("{{ url('login') }}", requestOptions)
+fetch("{{ url('api/login') }}", requestOptions)
 .then(response => response.text())
 .then(result => console.log(result))
 .catch(error => console.log('error', error));
@@ -279,7 +279,7 @@ fetch("{{ url('login') }}", requestOptions)
               <tr>
                 <th scope="row">3</th>
                 <td>
-                  <p>URI: {{ url('user?token={access_token}') }}</p>
+                  <p>URI: {{ url('api/user?token={access_token}') }}</p>
                   <span class="btn btn-sm btn-danger disabled">Example of JS Fetch:</span>
 
 <pre class="bg-dark text-light p-2 rounded">
@@ -288,7 +288,7 @@ method: 'GET',
 redirect: 'follow'
 };
 
-fetch("{{ url('user?token={access_token}') }}", requestOptions)
+fetch("{{ url('api/user?token={access_token}') }}", requestOptions)
 .then(response => response.text())
 .then(result => console.log(result))
 .catch(error => console.log('error', error));
@@ -300,7 +300,7 @@ fetch("{{ url('user?token={access_token}') }}", requestOptions)
               <tr>
                 <th scope="row">4</th>
                 <td>
-                  <p>URI: {{ url('logout?token={access_token}') }}</p>
+                  <p>URI: {{ url('api/logout?token={access_token}') }}</p>
                   <span class="btn btn-sm btn-danger disabled">Example of JS Fetch:</span>
 
 <pre class="bg-dark text-light p-2 rounded">
@@ -309,7 +309,7 @@ method: 'POST',
 redirect: 'follow'
 };
 
-fetch("{{ url('logout?token={access_token}') }}", requestOptions)
+fetch("{{ url('api/logout?token={access_token}') }}", requestOptions)
 .then(response => response.text())
 .then(result => console.log(result))
 .catch(error => console.log('error', error));
@@ -344,7 +344,7 @@ fetch("{{ url('logout?token={access_token}') }}", requestOptions)
               <tr>
                 <th scope="row">1</th>
                 <td>
-                  <p>URI: {{ url('categories?token={access_token}') }}</p>
+                  <p>URI: {{ url('api/categories?token={access_token}') }}</p>
                   <span class="btn btn-sm btn-danger disabled">Example of JS Fetch:</span>
 
 <pre class="bg-dark text-light p-2 rounded">
@@ -353,7 +353,7 @@ method: 'GET',
 redirect: 'follow'
 };
 
-fetch("{{ url('categories?token={access_token}') }}", requestOptions)
+fetch("{{ url('api/categories?token={access_token}') }}", requestOptions)
 .then(response => response.text())
 .then(result => console.log(result))
 .catch(error => console.log('error', error));
@@ -365,7 +365,7 @@ fetch("{{ url('categories?token={access_token}') }}", requestOptions)
               <tr>
                 <th scope="row">2</th>
                 <td>
-                  <p>URI: {{ url('categories?token={access_token}') }}</p>
+                  <p>URI: {{ url('api/categories?token={access_token}') }}</p>
                   <span class="btn btn-sm btn-danger disabled">Example of JS Fetch:</span>
 
 <pre class="bg-dark text-light p-2 rounded">
@@ -378,7 +378,7 @@ body: formdata,
 redirect: 'follow'
 };
 
-fetch("{{ url('categories?token={access_token}') }}", requestOptions)
+fetch("{{ url('api/categories?token={access_token}') }}", requestOptions)
 .then(response => response.text())
 .then(result => console.log(result))
 .catch(error => console.log('error', error));
@@ -390,7 +390,7 @@ fetch("{{ url('categories?token={access_token}') }}", requestOptions)
               <tr>
                 <th scope="row">3</th>
                 <td>
-                  <p>URI: {{ url('categories/{id}?token={access_token}') }}</p>
+                  <p>URI: {{ url('api/categories/{id}?token={access_token}') }}</p>
                   <span class="btn btn-sm btn-danger disabled">Example of JS Fetch:</span>
 
 <pre class="bg-dark text-light p-2 rounded">
@@ -399,7 +399,7 @@ method: 'GET',
 redirect: 'follow'
 };
 
-fetch("{{ url('categories/1?token={access_token}') }}", requestOptions)
+fetch("{{ url('api/categories/1?token={access_token}') }}", requestOptions)
 .then(response => response.text())
 .then(result => console.log(result))
 .catch(error => console.log('error', error));
@@ -411,7 +411,7 @@ fetch("{{ url('categories/1?token={access_token}') }}", requestOptions)
               <tr>
                 <th scope="row">4</th>
                 <td>
-                  <p>URI: {{ url('categories/{id}?token={access_token}') }}</p>
+                  <p>URI: {{ url('api/categories/{id}?token={access_token}') }}</p>
                   <span class="btn btn-sm btn-danger disabled">Example of JS Fetch:</span>
 
 <pre class="bg-dark text-light p-2 rounded">
@@ -425,7 +425,7 @@ body: formdata,
 redirect: 'follow'
 };
 
-fetch("{{ url('categories/1?token={access_token}') }}", requestOptions)
+fetch("{{ url('api/categories/1?token={access_token}') }}", requestOptions)
 .then(response => response.text())
 .then(result => console.log(result))
 .catch(error => console.log('error', error));
@@ -437,7 +437,7 @@ fetch("{{ url('categories/1?token={access_token}') }}", requestOptions)
               <tr>
                 <th scope="row">5</th>
                 <td>
-                  <p>URI: {{ url('categories/{id}?token={access_token}') }}</p>
+                  <p>URI: {{ url('api/categories/{id}?token={access_token}') }}</p>
                   <span class="btn btn-sm btn-danger disabled">Example of JS Fetch:</span>
 
 <pre class="bg-dark text-light p-2 rounded">
@@ -450,7 +450,7 @@ body: formdata,
 redirect: 'follow'
 };
 
-fetch("{{ url('categories/1?token={access_token}') }}", requestOptions)
+fetch("{{ url('api/categories/1?token={access_token}') }}", requestOptions)
 .then(response => response.text())
 .then(result => console.log(result))
 .catch(error => console.log('error', error));
@@ -485,7 +485,7 @@ fetch("{{ url('categories/1?token={access_token}') }}", requestOptions)
             <tr>
               <th scope="row">1</th>
               <td>
-                <p>URI: {{ url('posts?token={access_token}') }}</p>
+                <p>URI: {{ url('api/posts?token={access_token}') }}</p>
                 <span class="btn btn-sm btn-danger disabled">Example of JS Fetch:</span>
 
 <pre class="bg-dark text-light p-2 rounded">
@@ -494,7 +494,7 @@ method: 'GET',
 redirect: 'follow'
 };
 
-fetch("{{ url('posts?token={access_token}') }}", requestOptions)
+fetch("{{ url('api/posts?token={access_token}') }}", requestOptions)
 .then(response => response.text())
 .then(result => console.log(result))
 .catch(error => console.log('error', error));
@@ -506,7 +506,7 @@ fetch("{{ url('posts?token={access_token}') }}", requestOptions)
             <tr>
               <th scope="row">2</th>
               <td>
-                <p>URI: {{ url('posts?token={access_token}') }}</p>
+                <p>URI: {{ url('api/posts?token={access_token}') }}</p>
                 <span class="btn btn-sm btn-danger disabled">Example of JS Fetch:</span>
 
 <pre class="bg-dark text-light p-2 rounded">
@@ -523,7 +523,7 @@ body: formdata,
 redirect: 'follow'
 };
 
-fetch("{{ url('posts?token={access_token}') }}", requestOptions)
+fetch("{{ url('api/posts?token={access_token}') }}", requestOptions)
 .then(response => response.text())
 .then(result => console.log(result))
 .catch(error => console.log('error', error));
@@ -535,7 +535,7 @@ fetch("{{ url('posts?token={access_token}') }}", requestOptions)
             <tr>
               <th scope="row">3</th>
               <td>
-                <p>URI: {{ url('posts/{id}?token={access_token}') }}</p>
+                <p>URI: {{ url('api/posts/{id}?token={access_token}') }}</p>
                 <span class="btn btn-sm btn-danger disabled">Example of JS Fetch:</span>
 
 <pre class="bg-dark text-light p-2 rounded">
@@ -544,7 +544,7 @@ method: 'GET',
 redirect: 'follow'
 };
 
-fetch("{{ url('posts/1?token={access_token}') }}", requestOptions)
+fetch("{{ url('api/posts/1?token={access_token}') }}", requestOptions)
 .then(response => response.text())
 .then(result => console.log(result))
 .catch(error => console.log('error', error));
@@ -556,7 +556,7 @@ fetch("{{ url('posts/1?token={access_token}') }}", requestOptions)
             <tr>
               <th scope="row">4</th>
               <td>
-                <p>URI: {{ url('posts/{id}?token={access_token}') }}</p>
+                <p>URI: {{ url('api/posts/{id}?token={access_token}') }}</p>
                 <span class="btn btn-sm btn-danger disabled">Example of JS Fetch:</span>
 
 <pre class="bg-dark text-light p-2 rounded">
@@ -574,7 +574,7 @@ body: formdata,
 redirect: 'follow'
 };
 
-fetch("{{ url('posts/1?token={access_token}') }}", requestOptions)
+fetch("{{ url('api/posts/1?token={access_token}') }}", requestOptions)
 .then(response => response.text())
 .then(result => console.log(result))
 .catch(error => console.log('error', error));
@@ -586,7 +586,7 @@ fetch("{{ url('posts/1?token={access_token}') }}", requestOptions)
             <tr>
               <th scope="row">5</th>
               <td>
-                <p>URI: {{ url('posts/{id}?token={access_token}') }}</p>
+                <p>URI: {{ url('api/posts/{id}?token={access_token}') }}</p>
                 <span class="btn btn-sm btn-danger disabled">Example of JS Fetch:</span>
 
 <pre class="bg-dark text-light p-2 rounded">
@@ -599,7 +599,7 @@ body: formdata,
 redirect: 'follow'
 };
 
-fetch("{{ url('posts/1?token={access_token}') }}", requestOptions)
+fetch("{{ url('api/posts/1?token={access_token}') }}", requestOptions)
 .then(response => response.text())
 .then(result => console.log(result))
 .catch(error => console.log('error', error));
