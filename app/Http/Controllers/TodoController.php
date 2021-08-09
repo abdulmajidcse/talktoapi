@@ -46,7 +46,7 @@ class TodoController extends Controller
     /**
      * show
      *
-     * @param  mixed $id
+     *  @param  \App\Models\Todo  $todo
      * @return \Illuminate\Http\Response
      */
     public function show(Todo $todo)
@@ -61,7 +61,7 @@ class TodoController extends Controller
      * @param  mixed $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Todo $todo)
     {
         $this->validate($request, [
             'title' => 'required|string',
@@ -69,20 +69,15 @@ class TodoController extends Controller
             'comment' => 'nullable|string',
         ]);
 
-        $todo = Todo::where('ip_address', request()->ip())->where('id', $id)->first();
-
         if ($todo) {
-            $todo->update([
-                'title' => $request->input('title'),
-                'note' => $request->input('note'),
-                'comment' => $request->input('comment'),
-            ]);
-
-            return response()->json(['success' => 'Todo saved.']);
+            $todo->update($request->only(['title', 'note', 'comment']));
+            return successResponse($todo, 'Data Updated Successfully!', 202);
         }
 
-        return response()->json(['error' => 'Todo not found.'], 404);
+        // return response()->json(['error' => 'Todo not found.'], 404);
     }
+
+
 
     /**
      * destroy
