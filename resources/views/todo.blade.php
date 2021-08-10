@@ -17,6 +17,9 @@
                         <h6><a href="#POST">POST <span class="small">(Store a Todo)</span></a></h6>
                     </li>
                     <li>
+                        <h6><a href="#FETCH">GET <span class="small">(Fetch a Todo)</span></a></h6>
+                    </li>
+                    <li>
                         <h6><a href="#PUT">PUT/PATCH <span class="small">(Update a Todo)</span></a></h6>
                     </li>
                     <li>
@@ -36,7 +39,7 @@
         <hr>
 
         <section id="todo">
-            <div class="container" style="padding-top: 55px;">
+            <div class="container">
                 <div id="introduction">
                     <h5 class="text-info">Todo List</h5>
                     <p>Here is an example of Todo List. Without Authentication, you can complete a crud operation.</p>
@@ -56,30 +59,30 @@
                         <tr id="GET">
                           <th scope="row">1</th>
                           <td>
-                            <p>URI: http://127.0.0.1:8000/api/todos</p>
-                            <span class="btn btn-sm btn-danger disabled">Example of JS Fetch:</span>
+                            <p>URI: <code>http://127.0.0.1:8000/api/todos</code></p>
+                            <span class="badge bg-primary" style="border-radius: 0">Example of JS Fetch:</span>
+            <pre class="bg-dark text-light p-2">
+            var requestOptions = {
+                method: 'GET',
+                redirect: 'follow'
+            };
 
-          <pre class="bg-dark text-light p-2 rounded">var requestOptions = {
-          method: 'GET',
-          redirect: 'follow'
-          };
-
-          fetch("http://127.0.0.1:8000/api/todos", requestOptions)
-          .then(response =&gt; response.text())
-          .then(result =&gt; console.log(result))
-          .catch(error =&gt; console.log('error', error));
-          </pre>
+            fetch("http://127.0.0.1:8000/api/todos", requestOptions)
+            .then(response =&gt; response.text())
+            .then(result =&gt; console.log(result))
+            .catch(error =&gt; console.log('error', error));
+            </pre>
                           </td>
-                          <td>GET</td>
-                          <td>Get Todo List</td>
+                          <td class="text-center"><span class="badge bg-success">GET</span></td>
+                          <td>Get all Todo list which you have created.</td>
                         </tr>
                         <tr id="POST">
                           <th scope="row">2</th>
                           <td>
-                            <p>URI: http://127.0.0.1:8000/api/todos</p>
-                            <span class="btn btn-sm btn-danger disabled">Example of JS Fetch:</span>
+                            <p>URI: <code>http://127.0.0.1:8000/api/todos</code></p>
+                            <span class="badge bg-primary" style="border-radius: 0"">Example of JS Fetch:</span>
 
-          <pre class="bg-dark text-light p-2 rounded">var formdata = new FormData();
+          <pre class="bg-dark text-light p-2 ">var formdata = new FormData();
           formdata.append("title", "This is a note.");
           formdata.append("note", "Today note details");
           formdata.append("comment", "not required.");
@@ -96,16 +99,16 @@
           .catch(error =&gt; console.log('error', error));
           </pre>
                           </td>
-                          <td>POST</td>
-                          <td>Create a Todo</td>
+                          <td class="text-center"><span class="badge bg-success">POST</span></td>
+                          <td>Create a Todo list</td>
                         </tr>
-                        <tr id="">
+                        <tr id="FETCH">
                           <th scope="row">3</th>
                           <td>
-                            <p>URI: http://127.0.0.1:8000/api/todos/{id}</p>
-                            <span class="btn btn-sm btn-danger disabled">Example of JS Fetch:</span>
+                            <p>URI: <code>http://127.0.0.1:8000/api/todos/{id}</code></p>
+                            <span class="badge bg-primary" style="border-radius: 0">Example of JS Fetch:</span>
 
-          <pre class="bg-dark text-light p-2 rounded">var requestOptions = {
+          <pre class="bg-dark text-light p-2 ">var requestOptions = {
           method: 'GET',
           redirect: 'follow'
           };
@@ -116,16 +119,16 @@
           .catch(error =&gt; console.log('error', error));
           </pre>
                           </td>
-                          <td>GET</td>
-                          <td>Get a Todo</td>
+                          <td class="text-center"><span class="badge bg-success">GET</span></td>
+                          <td>Get a Todo List</td>
                         </tr>
-                        <tr>
+                        <tr id="PUT">
                           <th scope="row">4</th>
                           <td>
-                            <p>URI: http://127.0.0.1:8000/api/todos/{id}</p>
-                            <span class="btn btn-sm btn-danger disabled">Example of JS Fetch:</span>
+                            <p>URI: <code>http://127.0.0.1:8000/api/todos/{id}</code></p>
+                            <span class="badge bg-primary" style="border-radius: 0">Example of JS Fetch:</span>
 
-          <pre class="bg-dark text-light p-2 rounded">var formdata = new FormData();
+          <pre class="bg-dark text-light p-2 ">var formdata = new FormData();
           formdata.append("title", "This is a note update.");
           formdata.append("note", "Today note details");
           formdata.append("comment", "not required.");
@@ -143,16 +146,16 @@
           .catch(error =&gt; console.log('error', error));
           </pre>
                           </td>
-                          <td>PUT</td>
-                          <td>Update a Todo</td>
+                          <td class="text-center"><span class="badge bg-success">PUT</span></td>
+                          <td>Update a Todo List</td>
                         </tr>
-                        <tr>
+                        <tr id="DELETE">
                           <th scope="row">5</th>
                           <td>
-                            <p>URI: http://127.0.0.1:8000/api/todos/{id}</p>
-                            <span class="btn btn-sm btn-danger disabled">Example of JS Fetch:</span>
+                            <p>URI: <code>http://127.0.0.1:8000/api/todos/{id}</code></p>
+                            <span class="badge bg-primary" style="border-radius: 0">Example of JS Fetch:</span>
 
-          <pre class="bg-dark text-light p-2 rounded">var formdata = new FormData();
+          <pre class="bg-dark text-light p-2 ">var formdata = new FormData();
           formdata.append("_method", "delete");
 
           var requestOptions = {
@@ -167,8 +170,8 @@
           .catch(error =&gt; console.log('error', error));
           </pre>
                           </td>
-                          <td>DELETE</td>
-                          <td>Delete a Todo</td>
+                          <td class="text-center"><span class="badge bg-success">DELETE</span></td>
+                          <td>Delete a Todo List</td>
                         </tr>
                       </tbody>
                   </table>
