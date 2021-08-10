@@ -8,4 +8,13 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function docs()
+    {
+        return view('docs');
+    }
+    public function todo()
+    {
+        return view('todo');
+    }
 }

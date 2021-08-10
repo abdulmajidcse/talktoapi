@@ -2,7 +2,11 @@
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
+use App\Http\Controllers\HomeController;
+
+$router->get('/docs', 'HomeController@docs');
 $router->get('/', 'HomeController@index');
+$router->get('/todo', 'HomeController@todo');
 
 $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->get('todos', 'TodoController@index');
