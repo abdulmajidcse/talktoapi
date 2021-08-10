@@ -4,7 +4,7 @@
 
 $router->get('/', 'HomeController@index');
 
-$router->group(['prefix' => 'api'], function () use ($router) {
+$router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->get('todos', 'TodoController@index');
     $router->post('todos', 'TodoController@store');
     $router->get('todos/{id}', 'TodoController@show');

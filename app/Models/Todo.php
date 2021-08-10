@@ -4,6 +4,7 @@ namespace App\Models;
 
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Todo extends Model
@@ -35,5 +36,12 @@ class Todo extends Model
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d h:m:s A');
+    }
+
+    protected static function booted()
+    {
+        static::addGlobalScope('userIp', function (Builder $builder) {
+            $builder->whereIpAddress(request()->ip());
+        });
     }
 }

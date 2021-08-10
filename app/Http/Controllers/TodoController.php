@@ -6,7 +6,7 @@ use App\Models\Todo;
 use Illuminate\Http\Request;
 
 class TodoController extends Controller
-{    
+{
     /**
      * index
      *
@@ -14,13 +14,13 @@ class TodoController extends Controller
      */
     public function index()
     {
-        $this->data['todos'] = Todo::where('ip_address', request()->ip())->latest('id')->get();
-        return response()->json($this->data);
+        $todos = Todo::where('ip_address', request()->ip())->latest('id')->get();
+        return talkToApiResponse($todos);
     }
-    
+
     /**
      * store
-     * 
+     *
      * @param  Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
@@ -31,29 +31,33 @@ class TodoController extends Controller
             'note' => 'required|string',
             'comment' => 'nullable|string',
         ]);
-        
-        Todo::create([
+
+        $todo =  Todo::create([
             'ip_address' => $request->ip(),
             'title'      => $request->input('title'),
             'note'       => $request->input('note'),
             'comment'    => $request->input('comment'),
         ]);
 
-        return response()->json(['success' => 'Todo saved.']);
+        return talkToApiResponse($todo, 'Data Saved Successfully!', 201);
     }
-    
+
     /**
      * show
      *
-     * @param  mixed $id
+     *  @param  mixed $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $this->data['todo'] = Todo::where('ip_address', request()->ip())->where('id', $id)->first();
-        return response()->json($this->data);
+        $todo =  Todo::where('ip_address', request()->ip())->where('id', $id)->first();
+        if ($todo) {
+            return talkToApiResponse($todo);
+        }
+
+        return talkToApiResponse([], 'Data Not Found!', 404, false);
     }
-    
+
     /**
      * update
      *
@@ -68,7 +72,7 @@ class TodoController extends Controller
             'note' => 'required|string',
             'comment' => 'nullable|string',
         ]);
-        
+
         $todo = Todo::where('ip_address', request()->ip())->where('id', $id)->first();
         
         if($todo) {
@@ -77,13 +81,14 @@ class TodoController extends Controller
                 'note' => $request->input('note'),
                 'comment' => $request->input('comment'),
             ]);
-
-            return response()->json(['success' => 'Todo saved.']);
+            return talkToApiResponse($todo, 'Data Updated Successfully!', 202);
         }
 
-        return response()->json(['error' => 'Todo not found.'], 404);
+        return talkToApiResponse([], 'Data Not Found!', 404, false);
     }
-    
+
+
+
     /**
      * destroy
      *
@@ -93,12 +98,12 @@ class TodoController extends Controller
     public function destroy($id)
     {
         $todo = Todo::where('ip_address', request()->ip())->where('id', $id)->first();
-        
-        if($todo) {
+
+        if ($todo) {
             $todo->delete();
-            return response()->json(['success' => 'Todo deleted.']);
+            return talkToApiResponse([], "Data Deleted Successfully!", 202);
         }
 
-        return response()->json(['error' => 'Todo not found.'], 404);
+        return talkToApiResponse([], 'Data Not Found!', 404, false);
     }
 }
