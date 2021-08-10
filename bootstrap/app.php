@@ -98,8 +98,6 @@ $app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 
-$app->register(App\Providers\RouteBindingServiceProvider::class);
-
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes

@@ -1,18 +1,11 @@
 <?php
-if (!function_exists('greetings')) {
-    function greetings($name = 'Shahin'): string
-    {
-        return "Hello {$name}";
-    }
-}
-
-if (!function_exists('successResponse')) {
-    function successResponse($data = [], $message = 'Data retrieved successfully!', $code = 200)
+if (!function_exists('talkToApiResponse')) {
+    function talkToApiResponse($data = [], $message = 'Data Retrieved Successfully!', $status_code = 200, $success = true)
     {
         return response()->json([
-            'success' => true,
+            'success' => $success,
             'message' => $message,
             'data' => $data
-        ], $code);
+        ], $status_code);
     }
 }

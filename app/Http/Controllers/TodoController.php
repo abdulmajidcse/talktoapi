@@ -14,9 +14,8 @@ class TodoController extends Controller
      */
     public function index()
     {
-        $todos = Todo::latest()->get();
-
-        return successResponse($todos);
+        $todos = Todo::where('ip_address', request()->ip())->latest('id')->get();
+        return talkToApiResponse($todos);
     }
 
     /**
@@ -40,18 +39,23 @@ class TodoController extends Controller
             'comment'    => $request->input('comment'),
         ]);
 
-        return successResponse($todo, 'Data Saved Successfully!', 201);
+        return talkToApiResponse($todo, 'Data Saved Successfully!', 201);
     }
 
     /**
      * show
      *
-     *  @param  \App\Models\Todo  $todo
+     *  @param  mixed $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Todo $todo)
+    public function show($id)
     {
-        return successResponse($todo);
+        $todo =  Todo::where('ip_address', request()->ip())->where('id', $id)->first();
+        if ($todo) {
+            return talkToApiResponse($todo);
+        }
+
+        return talkToApiResponse([], 'Data Not Found!', 404, false);
     }
 
     /**
@@ -61,7 +65,7 @@ class TodoController extends Controller
      * @param  mixed $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Todo $todo)
+    public function update(Request $request, $id)
     {
         $this->validate($request, [
             'title' => 'required|string',
@@ -69,12 +73,18 @@ class TodoController extends Controller
             'comment' => 'nullable|string',
         ]);
 
-        if ($todo) {
-            $todo->update($request->only(['title', 'note', 'comment']));
-            return successResponse($todo, 'Data Updated Successfully!', 202);
+        $todo = Todo::where('ip_address', request()->ip())->where('id', $id)->first();
+        
+        if($todo) {
+            $todo->update([
+                'title' => $request->input('title'),
+                'note' => $request->input('note'),
+                'comment' => $request->input('comment'),
+            ]);
+            return talkToApiResponse($todo, 'Data Updated Successfully!', 202);
         }
 
-        // return response()->json(['error' => 'Todo not found.'], 404);
+        return talkToApiResponse([], 'Data Not Found!', 404, false);
     }
 
 
@@ -85,12 +95,15 @@ class TodoController extends Controller
      * @param  mixed $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Todo $todo)
+    public function destroy($id)
     {
-        $todo->delete();
+        $todo = Todo::where('ip_address', request()->ip())->where('id', $id)->first();
 
-        return successResponse([], "Data Deleted Successfully!", 202);
+        if ($todo) {
+            $todo->delete();
+            return talkToApiResponse([], "Data Deleted Successfully!", 202);
+        }
 
-        // return response()->json(['error' => 'Todo not found.'], 404);
+        return talkToApiResponse([], 'Data Not Found!', 404, false);
     }
 }
