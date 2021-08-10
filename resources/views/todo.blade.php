@@ -42,7 +42,7 @@
             <div class="container">
                 <div id="introduction">
                     <h5 class="text-info">Todo List</h5>
-                    <p>Here is an example of Todo List. Without Authentication, you can complete a crud operation.</p>
+                    <p>This is an example API of ToDo list without authentications. Using this API you can do full <b>CRUD</b> operations as well <b>paginations</b> and <b>searching</b>.</p>
                 </div>
                 <h4>API Request:</h4>
                 <div class="table-responsive">
