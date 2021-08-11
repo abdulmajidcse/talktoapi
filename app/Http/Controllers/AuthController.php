@@ -23,7 +23,7 @@ class AuthController extends Controller
             'password' => Hash::make($request->input('password')),
         ]);
 
-        return response()->json(['message' => 'Registration successfully!']);
+        return talkToApiResponse([], 'Registration successfully!');
     }
 
     /**
@@ -41,10 +41,10 @@ class AuthController extends Controller
         $credentials = request(['email', 'password']);
 
         if (! $token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return talkToApiResponse([], 'Unauthorized!', 401, false);
         }
 
-        return $this->respondWithToken($token);
+        return talkToApiResponse($this->respondWithToken($token), 'Access Token generated successfully!');
     }
 
     /**
@@ -54,7 +54,7 @@ class AuthController extends Controller
      */
     public function user()
     {
-        return response()->json(auth()->user());
+        return talkToApiResponse(auth()->user());
     }
 
     /**
@@ -66,7 +66,7 @@ class AuthController extends Controller
     {
         auth()->logout();
 
-        return response()->json(['message' => 'Successfully logged out']);
+        return talkToApiResponse([], 'Successfully logged out!');
     }
 
     /**
@@ -76,7 +76,7 @@ class AuthController extends Controller
      */
     public function refresh()
     {
-        return $this->respondWithToken(auth()->refresh());
+        return talkToApiResponse($this->respondWithToken(auth()->refresh()), 'Refresh token generated successfully!');
     }
 
     /**
@@ -88,10 +88,10 @@ class AuthController extends Controller
      */
     protected function respondWithToken($token)
     {
-        return response()->json([
+        return [
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60
-        ]);
+        ];
     }
 }

@@ -17,8 +17,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $this->data['posts'] = Post::where('user_id', auth()->id())->with('category')->latest('id')->get()->map->format();
-        return response()->json($this->data);
+        $posts = Post::where('user_id', auth()->id())->with('category')->latest('id')->get();
+        return talkToApiResponse($posts);
     }
     
     /**
@@ -66,7 +66,7 @@ class PostController extends Controller
         $post->content     = $request->input('content');
         $post->save();
 
-        return response()->json(['success' => 'Post saved.']);
+        return talkToApiResponse($post, 'Data Saved Successfully!', 201);
     }
     
     /**
@@ -78,11 +78,11 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::where('user_id', auth()->id())->where('id', $id)->with('category')->first();
-        $this->data['post'] = $post;
         if ($post) {
-            $this->data['post'] = $post->format();
+            return talkToApiResponse($post);
         }
-        return response()->json($this->data);
+        
+        return talkToApiResponse([], 'Data Not Found!', 404, false);
     }
     
     /**
@@ -126,7 +126,8 @@ class PostController extends Controller
                 $uploadedPath = Storage::putFileAs(date('Y/m/d') . '/post', $file, $fileName);
 
                 // delete old image if exist
-                $post->image && Storage::delete($post->image);
+                $imageDeletePath = Str::replaceFirst(Storage::url(''), '', $post->image);
+                Storage::delete($imageDeletePath);
 
                 $post->image = $uploadedPath;
             }
@@ -137,10 +138,10 @@ class PostController extends Controller
             $post->content     = $request->input('content');
             $post->save();
 
-            return response()->json(['success' => 'Post saved.']);
+            return talkToApiResponse($post, 'Data Updated Successfully!', 202);
         }
 
-        return response()->json(['error' => 'Post not found.'], 404);
+        return talkToApiResponse([], 'Data Not Found!', 404, false);
     }
     
     /**
@@ -154,12 +155,13 @@ class PostController extends Controller
         $post = Post::where('user_id', auth()->id())->where('id', $id)->first();
         
         if($post) {
-            // delete image if exist
-            $post->image && Storage::delete($post->image);
+            // delete old image if exist
+            $imageDeletePath = Str::replaceFirst(Storage::url(''), '', $post->image);
+            Storage::delete($imageDeletePath);
             $post->delete();
-            return response()->json(['success' => 'Post deleted.']);
+            return talkToApiResponse([], "Data Deleted Successfully!", 202);
         }
 
-        return response()->json(['error' => 'Post not found.'], 404);
+        return talkToApiResponse([], 'Data Not Found!', 404, false);
     }
 }

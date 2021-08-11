@@ -14,8 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $this->data['categories'] = Category::where('user_id', auth()->id())->latest('id')->get();
-        return response()->json($this->data);
+        $categories = Category::where('user_id', auth()->id())->with('posts')->latest('id')->get();
+        return talkToApiResponse($categories);
     }
     
     /**
@@ -30,12 +30,12 @@ class CategoryController extends Controller
             'name' => 'required|string|unique:categories,name',
         ]);
         
-        Category::create([
+        $category = Category::create([
             'user_id' => auth()->id(),
             'name'    => $request->input('name'),
         ]);
 
-        return response()->json(['success' => 'Category saved.']);
+        return talkToApiResponse($category, 'Data Saved Successfully!', 201);
     }
     
     /**
@@ -46,8 +46,12 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $this->data['category'] = Category::where('user_id', auth()->id())->where('id', $id)->first();
-        return response()->json($this->data);
+        $category = Category::where('user_id', auth()->id())->where('id', $id)->with('posts')->first();
+        if ($category) {
+            return talkToApiResponse($category);
+        }
+
+        return talkToApiResponse([], 'Data Not Found!', 404, false);
     }
     
     /**
@@ -70,10 +74,10 @@ class CategoryController extends Controller
                 'name' => $request->input('name'),
             ]);
 
-            return response()->json(['success' => 'Category saved.']);
+            return talkToApiResponse($category, 'Data Updated Successfully!', 202);
         }
 
-        return response()->json(['error' => 'Category not found.'], 404);
+        return talkToApiResponse([], 'Data Not Found!', 404, false);
     }
     
     /**
@@ -88,9 +92,9 @@ class CategoryController extends Controller
         
         if($category) {
             $category->delete();
-            return response()->json(['success' => 'Category deleted.']);
+            return talkToApiResponse([], "Data Deleted Successfully!", 202);
         }
 
-        return response()->json(['error' => 'Category not found.'], 404);
+        return talkToApiResponse([], 'Data Not Found!', 404, false);
     }
 }
