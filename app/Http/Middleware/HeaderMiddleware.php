@@ -15,7 +15,8 @@ class HeaderMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $request->headers->add(['access-control-allow-origin' => '*']);
-        return $next($request);
+        $response = $next($request);
+        $response->header('access-control-allow-origin', '*');
+        return $response;
     }
 }
