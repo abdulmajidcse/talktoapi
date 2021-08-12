@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Models\Todo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class TodoController extends Controller
 {
@@ -27,11 +28,15 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'title' => 'required|string',
             'note' => 'required|string',
             'comment' => 'nullable|string',
         ]);
+
+        if ($validator->fails()) {
+            return talkToApiResponse($validator->getMessageBag(), '', 422, false);
+        }
 
         $todo =  Todo::create([
             'ip_address' => $request->ip(),
@@ -46,37 +51,34 @@ class TodoController extends Controller
     /**
      * show
      *
-     *  @param  mixed $id
+     *  @param  mixed Todo $todo
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Todo $todo)
     {
-        $todo =  Todo::where('ip_address', request()->ip())->where('id', $id)->first();
-        if ($todo) {
+        if ($todo->ip_address == request()->ip()) {
             return talkToApiResponse($todo);
         }
 
-        return talkToApiResponse([], 'Data Not Found!', 404, false);
+        return abort(404);
     }
 
     /**
      * update
      *
      * @param  Illuminate\Http\Request $request
-     * @param  mixed $id
+     * @param  mixed Todo $todo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Todo $todo)
     {
         $this->validate($request, [
             'title' => 'required|string',
             'note' => 'required|string',
             'comment' => 'nullable|string',
         ]);
-
-        $todo = Todo::where('ip_address', request()->ip())->where('id', $id)->first();
         
-        if($todo) {
+        if ($todo->ip_address == request()->ip()) {
             $todo->update([
                 'title' => $request->input('title'),
                 'note' => $request->input('note'),
@@ -85,7 +87,7 @@ class TodoController extends Controller
             return talkToApiResponse($todo, 'Data Updated Successfully!', 202);
         }
 
-        return talkToApiResponse([], 'Data Not Found!', 404, false);
+        return abort(404);
     }
 
 
@@ -93,18 +95,16 @@ class TodoController extends Controller
     /**
      * destroy
      *
-     * @param  mixed $id
+     * @param  mixed Todo $todo
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Todo $todo)
     {
-        $todo = Todo::where('ip_address', request()->ip())->where('id', $id)->first();
-
-        if ($todo) {
+        if ($todo->ip_address == request()->ip()) {
             $todo->delete();
             return talkToApiResponse([], "Data Deleted Successfully!", 202);
         }
 
-        return talkToApiResponse([], 'Data Not Found!', 404, false);
+        return abort(404);
     }
 }

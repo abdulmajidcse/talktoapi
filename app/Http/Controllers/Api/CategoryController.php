@@ -42,35 +42,32 @@ class CategoryController extends Controller
     /**
      * show
      *
-     * @param  mixed $id
+     * @param  mixed Category $category
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Category $category)
     {
-        $category = Category::where('user_id', auth('api')->id())->where('id', $id)->with('posts')->first();
-        if ($category) {
-            return talkToApiResponse($category);
+        if ($category->user_id == auth('api')->id()) {
+            return talkToApiResponse($category->with('posts'));
         }
 
-        return talkToApiResponse([], 'Data Not Found!', 404, false);
+        return abort(404);
     }
     
     /**
      * update
      *
      * @param  Illuminate\Http\Request $request
-     * @param  mixed $id
+     * @param  mixed Category $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
         $this->validate($request, [
-            'name' => 'required|string|unique:categories,name,'.$id,
+            'name' => 'required|string|unique:categories,name,'.$category->id,
         ]);
         
-        $category = Category::where('user_id', auth('api')->id())->where('id', $id)->first();
-        
-        if($category) {
+        if($category->user_id == auth('api')->id()) {
             $category->update([
                 'name' => $request->input('name'),
             ]);
@@ -78,24 +75,22 @@ class CategoryController extends Controller
             return talkToApiResponse($category, 'Data Updated Successfully!', 202);
         }
 
-        return talkToApiResponse([], 'Data Not Found!', 404, false);
+        return abort(404);
     }
     
     /**
      * destroy
      *
-     * @param  mixed $id
+     * @param  mixed Category $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        $category = Category::where('user_id', auth('api')->id())->where('id', $id)->first();
-        
-        if($category) {
+    public function destroy(Category $category)
+    {   
+        if($category->user_id == auth('api')->id()) {
             $category->delete();
             return talkToApiResponse([], "Data Deleted Successfully!", 202);
         }
 
-        return talkToApiResponse([], 'Data Not Found!', 404, false);
+        return abort(404);
     }
 }

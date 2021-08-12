@@ -18,7 +18,7 @@ use App\Http\Controllers\Api\TodoController;
 */
 
 Route::name('api.')->group(function() {
-    Route::apiResource('todos', TodoController::class)->parameters(['todos' => 'id']);
+    Route::apiResource('todos', TodoController::class);
 
     /**
      * Authenticate routes
@@ -33,9 +33,9 @@ Route::name('api.')->group(function() {
         Route::post('refresh', [AuthController::class, 'refresh'])->name('refresh');
         Route::post('logout', [AuthController::class, 'logout'])->name('logout');
         // category crud routes
-        Route::apiResource('categories', CategoryController::class)->parameters(['categories' => 'id']);
+        Route::apiResource('categories', CategoryController::class);
         // post crud routes
-        Route::apiResource('posts', PostController::class)->parameters(['posts' => 'id']);
+        Route::apiResource('posts', PostController::class);
     });
 
 });
