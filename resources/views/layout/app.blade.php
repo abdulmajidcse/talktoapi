@@ -23,7 +23,7 @@
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
-           @includeIf('inc.sidebar')
+           @includeIf('includes.sidebar')
 
             <div class="col-md-9 mt-5 p-3">
               @yield('app_content')

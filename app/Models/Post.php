@@ -28,21 +28,6 @@ class Post extends Model
         'category_id',
     ];
 
-    public function format()
-    {
-
-        $attributes = [
-            'id'         => $this->id,
-            'title'      => $this->title,
-            'image'      => Storage::exists($this->image) ? Storage::url($this->image) : null,
-            'content'    => $this->content,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-        ];
-
-        return $attributes;
-    }
-
     /**
      * Prepare a date for array / JSON serialization.
      *
@@ -57,5 +42,16 @@ class Post extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    /**
+     * Get the user's first name.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getImageAttribute($value)
+    {
+        return Storage::exists($value) ? Storage::url($value) : null;
     }
 }
