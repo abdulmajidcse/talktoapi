@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\PostRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -29,28 +30,8 @@ class PostController extends Controller
      * @param  Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'category_id' => ['required', 'integer',
-                                function ($attribute, $value, $fail) {
-                                    $category = Category::where('user_id', auth('api')->id())->where('id', $value)->first();
-                                    if (! $category) {
-                                        $fail('The category not found.');
-                                    }
-                                },
-                            ],
-            'title'       => 'required|string',
-            'image'       => 'nullable|image|mimes:png,jpg,jpeg|max:4000',
-            'content'     => 'required|string',
-        ], [], [
-            'category_id' => 'category',
-        ]);
-
-        if ($validator->fails()) {
-            return talkToApiResponse($validator->getMessageBag(), '', 422, false);
-        }
-
         $post = new Post();
 
         // image is uploaded
@@ -97,28 +78,8 @@ class PostController extends Controller
      * @param  mixed Post $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(PostRequest $request, Post $post)
     {
-        $validator = Validator::make($request->all(), [
-            'category_id' => ['required', 'integer',
-                                function ($attribute, $value, $fail) {
-                                    $category = Category::where('user_id', auth('api')->id())->where('id', $value)->first();
-                                    if (! $category) {
-                                        $fail('The category not found.');
-                                    }
-                                },
-                            ],
-            'title'       => 'required|string',
-            'image'       => 'nullable|image|mimes:png,jpg,jpeg|max:4000',
-            'content'     => 'required|string',
-        ], [], [
-            'category_id' => 'category',
-        ]);
-
-        if ($validator->fails()) {
-            return talkToApiResponse($validator->getMessageBag(), '', 422, false);
-        }
-
         if ($post->user_id == auth('api')->id()) {
 
             // image is uploaded
