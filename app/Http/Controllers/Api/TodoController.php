@@ -72,11 +72,15 @@ class TodoController extends Controller
      */
     public function update(Request $request, Todo $todo)
     {
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'title' => 'required|string',
             'note' => 'required|string',
             'comment' => 'nullable|string',
         ]);
+
+        if ($validator->fails()) {
+            return talkToApiResponse($validator->getMessageBag(), '', 422, false);
+        }
         
         if ($todo->ip_address == request()->ip()) {
             $todo->update([

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {    
@@ -27,9 +28,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string|unique:categories,name',
         ]);
+
+        if ($validator->fails()) {
+            return talkToApiResponse($validator->getMessageBag(), '', 422, false);
+        }
         
         $category = Category::create([
             'user_id' => auth('api')->id(),
@@ -63,9 +68,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string|unique:categories,name,'.$category->id,
         ]);
+
+        if ($validator->fails()) {
+            return talkToApiResponse($validator->getMessageBag(), '', 422, false);
+        }
         
         if($category->user_id == auth('api')->id()) {
             $category->update([

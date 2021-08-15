@@ -6,16 +6,21 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
     public function register(Request $request)
     {
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string',
             'email' => 'required|email|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ]);
+
+        if ($validator->fails()) {
+            return talkToApiResponse($validator->getMessageBag(), '', 422, false);
+        }
 
         // create user
         User::create([
@@ -34,10 +39,14 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'email' => 'required|email',
             'password' => 'required|string',
         ]);
+
+        if ($validator->fails()) {
+            return talkToApiResponse($validator->getMessageBag(), '', 422, false);
+        }
 
         $credentials = request(['email', 'password']);
 

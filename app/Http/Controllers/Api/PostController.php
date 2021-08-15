@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {    
@@ -30,7 +31,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'category_id' => ['required', 'integer',
                                 function ($attribute, $value, $fail) {
                                     $category = Category::where('user_id', auth('api')->id())->where('id', $value)->first();
@@ -45,6 +46,10 @@ class PostController extends Controller
         ], [], [
             'category_id' => 'category',
         ]);
+
+        if ($validator->fails()) {
+            return talkToApiResponse($validator->getMessageBag(), '', 422, false);
+        }
 
         $post = new Post();
 
@@ -73,29 +78,28 @@ class PostController extends Controller
     /**
      * show
      *
-     * @param  mixed $id
+     * @param  mixed Post $post
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        $post = Post::where('user_id', auth('api')->id())->where('id', $id)->with('category')->first();
-        if ($post) {
+        if ($post->user_id == auth('api')->id()) {
             return talkToApiResponse($post);
         }
         
-        return talkToApiResponse([], 'Data Not Found!', 404, false);
+        return abort(404);
     }
     
     /**
      * update
      *
      * @param  Illuminate\Http\Request $request
-     * @param  mixed $id
+     * @param  mixed Post $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'category_id' => ['required', 'integer',
                                 function ($attribute, $value, $fail) {
                                     $category = Category::where('user_id', auth('api')->id())->where('id', $value)->first();
@@ -111,9 +115,11 @@ class PostController extends Controller
             'category_id' => 'category',
         ]);
 
-        $post = Post::where('user_id', auth('api')->id())->where('id', $id)->first();
+        if ($validator->fails()) {
+            return talkToApiResponse($validator->getMessageBag(), '', 422, false);
+        }
 
-        if ($post) {
+        if ($post->user_id == auth('api')->id()) {
 
             // image is uploaded
             if ($request->hasFile('image')) {
@@ -142,20 +148,18 @@ class PostController extends Controller
             return talkToApiResponse($post, 'Data Updated Successfully!', 202);
         }
 
-        return talkToApiResponse([], 'Data Not Found!', 404, false);
+        return abort(404);
     }
     
     /**
      * destroy
      *
-     * @param  mixed $id
+     * @param  mixed Post $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        $post = Post::where('user_id', auth('api')->id())->where('id', $id)->first();
-        
-        if($post) {
+    public function destroy(Post $post)
+    {   
+        if ($post->user_id == auth('api')->id()) {
             // delete old image if exist
             $imageDeletePath = Str::replaceFirst(Storage::url(''), '', $post->image);
             Storage::delete($imageDeletePath);
@@ -163,6 +167,6 @@ class PostController extends Controller
             return talkToApiResponse([], "Data Deleted Successfully!", 202);
         }
 
-        return talkToApiResponse([], 'Data Not Found!', 404, false);
+        return abort(404);
     }
 }
