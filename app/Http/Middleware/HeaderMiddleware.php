@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\Request;
 
 class HeaderMiddleware
 {
@@ -13,9 +14,10 @@ class HeaderMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
-        $request->headers->add(['access-control-allow-origin' => '*']);
-        return $next($request);
+        $response = $next($request);
+        $response->header('access-control-allow-origin', '*');
+        return $response;
     }
 }

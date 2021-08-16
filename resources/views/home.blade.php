@@ -14,8 +14,8 @@
             </li>
         </ul>
         <hr>
-        @includeIf('inc.introduction')
-        @includeIf('inc.howToUse')
-        @includeIf('inc.versionAndDevelopers')
+        @includeIf('includes.introduction')
+        @includeIf('includes.howToUse')
+        @includeIf('includes.versionAndDevelopers')
     </div>
 @stop

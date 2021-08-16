@@ -1,42 +1,22 @@
 <?php
 
-/** @var \Laravel\Lumen\Routing\Router $router */
+use App\Http\Controllers\FallbackController;
+use App\Http\Controllers\Web\HomeController;
+use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\HomeController;
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
 
-$router->get('/docs', 'HomeController@docs');
-$router->get('/', 'HomeController@index');
-$router->get('/todo', 'HomeController@todo');
-
-$router->group(['prefix' => 'api/v1'], function () use ($router) {
-    $router->get('todos', 'TodoController@index');
-    $router->post('todos', 'TodoController@store');
-    $router->get('todos/{id}', 'TodoController@show');
-    $router->put('todos/{id}', 'TodoController@update');
-    $router->delete('todos/{id}', 'TodoController@destroy');
-
-
-    /**
-     * Authenticate routes
-     */
-    $router->post('register', 'AuthController@register');
-    $router->post('login', 'AuthController@login');
-
-    $router->group(['middleware' => 'auth'], function () use ($router) {
-        $router->get('user', 'AuthController@user');
-        $router->post('refresh', 'AuthController@refresh');
-        $router->post('logout', 'AuthController@logout');
-        // category crud routes
-        $router->get('categories', 'CategoryController@index');
-        $router->post('categories', 'CategoryController@store');
-        $router->get('categories/{id}', 'CategoryController@show');
-        $router->put('categories/{id}', 'CategoryController@update');
-        $router->delete('categories/{id}', 'CategoryController@destroy');
-        // post crud routes
-        $router->get('posts', 'PostController@index');
-        $router->post('posts', 'PostController@store');
-        $router->get('posts/{id}', 'PostController@show');
-        $router->put('posts/{id}', 'PostController@update');
-        $router->delete('posts/{id}', 'PostController@destroy');
-    });
+Route::name('web.')->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('docs', [HomeController::class, 'docs'])->name('docs');
+    Route::get('todos', [HomeController::class, 'todos'])->name('todos');
 });
