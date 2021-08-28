@@ -166,86 +166,131 @@
                         </pre>
                     </div>
                 </div>
-                <div class="table-responsive">
-                  <table class="table table-bordered">
+<hr>
+                  <!-- FETCH Row  -->
+                  <div class="row " id="FETCH">
+                    <div class="col-md-1 col-12 border_right">
+                        <b>3</b>
+                    </div>
+                    <div class="col-12 col-md-6 border_right">
+                        <p>URI: <code>http://127.0.0.1:8000/api/todos/{id}</code></p>
+                        <span class="badge bg-primary" style="border-radius: 0">Example of JS Fetch:</span>
+                        <pre class="bg-dark text-light p-2 ">var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+        };
 
-                      <tbody>
-
-
-                        <tr id="FETCH">
-                          <th scope="row">3</th>
-                          <td>
-                            <p>URI: <code>http://127.0.0.1:8000/api/todos/{id}</code></p>
-                            <span class="badge bg-primary" style="border-radius: 0">Example of JS Fetch:</span>
-
-          <pre class="bg-dark text-light p-2 ">var requestOptions = {
-          method: 'GET',
-          redirect: 'follow'
-          };
-
-          fetch("http://127.0.0.1:8000/api/todos/3", requestOptions)
-          .then(response =&gt; response.text())
-          .then(result =&gt; console.log(result))
-          .catch(error =&gt; console.log('error', error));
-          </pre>
-                          </td>
-                          <td class="text-center"><span class="badge bg-success">GET</span></td>
-                          <td>Get a Todo List</td>
-                        </tr>
-                        <tr id="PUT">
-                          <th scope="row">4</th>
-                          <td>
-                            <p>URI: <code>http://127.0.0.1:8000/api/todos/{id}</code></p>
-                            <span class="badge bg-primary" style="border-radius: 0">Example of JS Fetch:</span>
-
-          <pre class="bg-dark text-light p-2 ">var formdata = new FormData();
-          formdata.append("title", "This is a note update.");
-          formdata.append("note", "Today note details");
-          formdata.append("comment", "not required.");
-          formdata.append("_method", "put");
-
-          var requestOptions = {
-          method: 'POST',
-          body: formdata,
-          redirect: 'follow'
-          };
-
-          fetch("http://127.0.0.1:8000/api/todos/3", requestOptions)
-          .then(response =&gt; response.text())
-          .then(result =&gt; console.log(result))
-          .catch(error =&gt; console.log('error', error));
-          </pre>
-                          </td>
-                          <td class="text-center"><span class="badge bg-success">PUT</span></td>
-                          <td>Update a Todo List</td>
-                        </tr>
-                        <tr id="DELETE">
-                          <th scope="row">5</th>
-                          <td>
-                            <p>URI: <code>http://127.0.0.1:8000/api/todos/{id}</code></p>
-                            <span class="badge bg-primary" style="border-radius: 0">Example of JS Fetch:</span>
-
-          <pre class="bg-dark text-light p-2 ">var formdata = new FormData();
-          formdata.append("_method", "delete");
-
-          var requestOptions = {
-          method: 'POST',
-          body: formdata,
-          redirect: 'follow'
-          };
-
-          fetch("http://127.0.0.1:8000/api/todos/3", requestOptions)
-          .then(response =&gt; response.text())
-          .then(result =&gt; console.log(result))
-          .catch(error =&gt; console.log('error', error));
-          </pre>
-                          </td>
-                          <td class="text-center"><span class="badge bg-success">DELETE</span></td>
-                          <td>Delete a Todo List</td>
-                        </tr>
-                      </tbody>
-                  </table>
+        fetch("http://127.0.0.1:8000/api/todos/3", requestOptions)
+        .then(response =&gt; response.text())
+        .then(result =&gt; console.log(result))
+        .catch(error =&gt; console.log('error', error));
+        </pre>
+                    </div>
+                    <div class="col-md-1 col-12 text-center border_right">
+                        <span class="badge bg-success">GET</span>
+                    </div>
+                    <div class="col-md-4 col-12">
+                        <pre>
+{
+    "success": true,
+    "message": "Data Retrieved Successfully!",
+    "data": {
+        "id": 4,
+        "title": "talk to api",
+        "note": "talk to api",
+        "comment": "talk to api",
+        "created_at": "2021-08-09 08:08:12 PM",
+        "updated_at": "2021-08-09 08:08:45 PM"
+    }
+}
+                        </pre>
+                    </div>
                 </div>
+                <hr>
+                  <!-- PUT Row  -->
+                  <div class="row " id="PUT">
+                    <div class="col-md-1 col-12 border_right">
+                        <b>4</b>
+                    </div>
+                    <div class="col-12 col-md-6 border_right">
+                        <p>URI: <code>http://127.0.0.1:8000/api/todos/{id}</code></p>
+                        <span class="badge bg-primary" style="border-radius: 0">Example of JS Update:</span>
+                        <pre class="bg-dark text-light p-2 ">var formdata = new FormData();
+    formdata.append("title", "This is a note update.");
+    formdata.append("note", "Today note details");
+    formdata.append("comment", "not required.");
+    formdata.append("_method", "put");
+
+    var requestOptions = {
+    method: 'POST',
+    body: formdata,
+    redirect: 'follow'
+    };
+
+    fetch("http://127.0.0.1:8000/api/todos/3", requestOptions)
+    .then(response =&gt; response.text())
+    .then(result =&gt; console.log(result))
+    .catch(error =&gt; console.log('error', error));
+    </pre>
+                    </div>
+                    <div class="col-md-1 col-12 text-center border_right">
+                        <span class="badge bg-success">PUT</span>
+                    </div>
+                    <div class="col-md-4 col-12">
+                        <pre>
+{
+    "success": true,
+    "message": "Data Updated Successfully!",
+    "data": {
+        "id": 4,
+        "title": "Talk to api",
+        "note": "Talk to api",
+        "comment": "Talk to api",
+        "created_at": "2021-08-09 08:08:12 PM",
+        "updated_at": "2021-08-28 02:08:01 PM"
+    }
+}
+                        </pre>
+                    </div>
+                </div>
+
+                <hr>
+                <!-- DELETE Row  -->
+                <div class="row " id="DELETE">
+                  <div class="col-md-1 col-12 border_right">
+                      <b>5</b>
+                  </div>
+                  <div class="col-12 col-md-6 border_right">
+                      <p>URI: <code>http://127.0.0.1:8000/api/todos/{id}</code></p>
+                      <span class="badge bg-primary" style="border-radius: 0">Example of JS Delete:</span>
+                      <pre class="bg-dark text-light p-2 ">var formdata = new FormData();
+    formdata.append("_method", "delete");
+
+    var requestOptions = {
+    method: 'POST',
+    body: formdata,
+    redirect: 'follow'
+    };
+
+    fetch("http://127.0.0.1:8000/api/todos/3", requestOptions)
+    .then(response =&gt; response.text())
+    .then(result =&gt; console.log(result))
+    .catch(error =&gt; console.log('error', error));
+    </pre>
+                  </div>
+                  <div class="col-md-1 col-12 text-center border_right">
+                      <span class="badge bg-success">DELETE</span>
+                  </div>
+                  <div class="col-md-4 col-12">
+                      <pre>
+{
+    "success": true,
+    "message": "Data Deleted Successfully!",
+    "data": []
+}
+                      </pre>
+                  </div>
+              </div>
             </div>
           </section>
     </div>
