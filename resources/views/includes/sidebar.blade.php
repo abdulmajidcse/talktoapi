@@ -9,4 +9,10 @@
      <a class="btn btn-link text-left w-100" href="{{ route('web.todos') }}">
         To Do Api
     </a>
+    <a class="btn btn-link text-left w-100" href="{{ route('web.authentication') }}">
+        Authentication
+    </a>
+    <a class="btn btn-link text-left w-100" href="{{ route('web.blog') }}">
+        Blog
+    </a>
  </div> <!-- col-3 -->

@@ -8,16 +8,26 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('home');
+        return view('docs.home');
     }
 
     public function docs()
     {
-        return view('docs');
+        return view('docs.docs');
     }
 
     public function todos()
     {
-        return view('todo');
+        return view('docs.todo');
+    }
+
+    function authentication()
+    {
+        return view('docs.authentication');
+    }
+
+    function blog()
+    {
+        return view('docs.blog');
     }
 }
