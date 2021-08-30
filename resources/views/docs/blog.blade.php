@@ -2,6 +2,7 @@
 @section('title' ,'Blog API')
 @section('app_content')
     <div class="Home">
+
         <h1>#Blog API</h1>
         {{-- <ul>
             <li>
