@@ -1,12 +1,5 @@
 @extends('layout.app')
 @section('title' ,'To Do')
-@push('css')
-    <style>
-        .border_right{
-            border-right: 1px solid #ccc;
-        }
-    </style>
-@endpush
 @section('app_content')
     <div class="To Do">
         <h1>#ToDo API</h1>
@@ -54,22 +47,9 @@
                 <h4>API Request:</h4>
                 <hr>
                 <!-- Header -->
-                <div class="row">
-                    <div class="col-1 col-md-1 "  >
-                        <b>#</b>
-                    </div>
-                    <div class="col-5 col-md-6 border_right">
-                        <b>Details</b>
-                    </div>
-                    <div class="col-3 col-md-3 border_right">
-                        <b>Methods</b>
-                    </div>
-                    <div class="col-3 col-md-2 border_right">
-                        <b>Response</b>
-                    </div>
-                </div>
+               <x-docs.header/>
                 <!-- / Header -->
-                <hr>
+
                 <!-- get row -->
                 <div class="row " id="GET">
                     <div class="col-md-1 col-12 border_right">
