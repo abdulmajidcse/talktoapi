@@ -76,7 +76,7 @@
                         <b>1</b>
                     </div>
                     <div class="col-12 col-md-6 border_right">
-                        <p>URI: <code>http://127.0.0.1:8000/api/todos</code></p>
+                        <p>URI: <code>{{ url('/todos') }}</code></p>
                         <span class="badge bg-primary" style="border-radius: 0">Example of JS Fetch:</span>
         <pre class="bg-dark text-light p-2">
         var requestOptions = {
@@ -85,9 +85,9 @@
         };
 
         fetch("http://127.0.0.1:8000/api/todos", requestOptions)
-        .then(response =&gt; response.text())
-        .then(result =&gt; console.log(result))
-        .catch(error =&gt; console.log('error', error));
+            .then(response =&gt; response.text())
+            .then(result =&gt; console.log(result))
+            .catch(error =&gt; console.log('error', error));
         </pre>
                     </div>
                     <div class="col-md-1 col-12 text-center border_right">
@@ -291,6 +291,26 @@
                       </pre>
                   </div>
               </div>
+
+              <!-- Pagination -->
+<hr>
+              <div class="row" id="PAGINATION">
+                  <div class="col-12">
+                    <div class="alert alert-warning" role="alert">
+                        Pagination API is Coming Soon!!
+                      </div>
+                  </div>
+              </div>
+
+                         <!-- Pagination -->
+<hr>
+<div class="row" id="SEARCH">
+    <div class="col-12">
+      <div class="alert alert-warning" role="alert">
+        Search API is Coming Soon!!
+        </div>
+    </div>
+</div>
             </div>
           </section>
     </div>
