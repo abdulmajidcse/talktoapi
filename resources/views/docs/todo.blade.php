@@ -76,7 +76,7 @@
                         <b>1</b>
                     </div>
                     <div class="col-12 col-md-6 border_right">
-                        <p>URI: <code>{{ url('/todos') }}</code></p>
+                        <p>URI: <code>{{ url('/api/todos') }}</code></p>
                         <span class="badge bg-primary" style="border-radius: 0">Example of JS Fetch:</span>
         <pre class="bg-dark text-light p-2">
         var requestOptions = {
@@ -100,20 +100,20 @@
     "message": "Data Retrieved Successfully!",
     "data": [
         {
-            "id": 4,
-            "title": "ssdddddddd",
-            "note": "ddd",
-            "comment": "password",
-            "created_at": "2021-08-09 08:08:12 PM",
-            "updated_at": "2021-08-09 08:08:45 PM"
+            "id": 7,
+            "title": "Talk to api 2",
+            "note": "Talk to api 2",
+            "comment": "Talk to api 2",
+            "created_at": "2021-08-30 04:08:21 AM",
+            "updated_at": "2021-08-30 04:08:21 AM"
         },
         {
-            "id": 1,
-            "title": "shahin",
-            "note": "note",
-            "comment": "password",
-            "created_at": "2021-08-09 07:08:30 PM",
-            "updated_at": "2021-08-09 07:08:30 PM"
+            "id": 6,
+            "title": "Talk to api",
+            "note": "Talk to api",
+            "comment": "Talk to api",
+            "created_at": "2021-08-30 04:08:40 AM",
+            "updated_at": "2021-08-30 04:08:40 AM"
         }
     ]
 }
