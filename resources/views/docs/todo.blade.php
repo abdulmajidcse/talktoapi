@@ -127,7 +127,7 @@
                         <b>2</b>
                     </div>
                     <div class="col-12 col-md-6 border_right">
-                        <p>URI: <code>http://127.0.0.1:8000/api/todos</code></p>
+                        <p>URI: <code>{{ url('http://127.0.0.1:8000/api/todos') }}</code></p>
                         <span class="badge bg-primary" style="border-radius: 0">Example of JS Fetch:</span>
                         <pre class="bg-dark text-light p-2 ">var formdata = new FormData();
     formdata.append("title", "This is a note.");
@@ -173,7 +173,7 @@
                         <b>3</b>
                     </div>
                     <div class="col-12 col-md-6 border_right">
-                        <p>URI: <code>http://127.0.0.1:8000/api/todos/{id}</code></p>
+                        <p>URI: <code>{{ url('http://127.0.0.1:8000/api/todos/{id}') }}</code></p>
                         <span class="badge bg-primary" style="border-radius: 0">Example of JS Fetch:</span>
                         <pre class="bg-dark text-light p-2 ">var requestOptions = {
         method: 'GET',
@@ -213,7 +213,7 @@
                         <b>4</b>
                     </div>
                     <div class="col-12 col-md-6 border_right">
-                        <p>URI: <code>http://127.0.0.1:8000/api/todos/{id}</code></p>
+                        <p>URI: <code>{{ url('http://127.0.0.1:8000/api/todos/{id}') }}</code></p>
                         <span class="badge bg-primary" style="border-radius: 0">Example of JS Update:</span>
                         <pre class="bg-dark text-light p-2 ">var formdata = new FormData();
     formdata.append("title", "This is a note update.");
@@ -261,7 +261,7 @@
                       <b>5</b>
                   </div>
                   <div class="col-12 col-md-6 border_right">
-                      <p>URI: <code>http://127.0.0.1:8000/api/todos/{id}</code></p>
+                      <p>URI: <code>{{ url('http://127.0.0.1:8000/api/todos/{id}') }}</code></p>
                       <span class="badge bg-primary" style="border-radius: 0">Example of JS Delete:</span>
                       <pre class="bg-dark text-light p-2 ">var formdata = new FormData();
     formdata.append("_method", "delete");
