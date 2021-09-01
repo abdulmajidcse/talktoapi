@@ -16,6 +16,9 @@
         a{
           text-decoration: none
         }
+        .border_right{
+            border-right: 1px solid #ccc;
+        }
     </style>
       <title>@yield('title') | TalkToApi | Docs</title>
   </head>

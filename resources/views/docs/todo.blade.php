@@ -1,12 +1,5 @@
 @extends('layout.app')
 @section('title' ,'To Do')
-@push('css')
-    <style>
-        .border_right{
-            border-right: 1px solid #ccc;
-        }
-    </style>
-@endpush
 @section('app_content')
     <div class="To Do">
         <h1>#ToDo API</h1>
@@ -54,29 +47,16 @@
                 <h4>API Request:</h4>
                 <hr>
                 <!-- Header -->
-                <div class="row">
-                    <div class="col-1 col-md-1 "  >
-                        <b>#</b>
-                    </div>
-                    <div class="col-5 col-md-6 border_right">
-                        <b>Details</b>
-                    </div>
-                    <div class="col-3 col-md-3 border_right">
-                        <b>Methods</b>
-                    </div>
-                    <div class="col-3 col-md-2 border_right">
-                        <b>Response</b>
-                    </div>
-                </div>
+               <x-docs.header/>
                 <!-- / Header -->
-                <hr>
+
                 <!-- get row -->
                 <div class="row " id="GET">
                     <div class="col-md-1 col-12 border_right">
                         <b>1</b>
                     </div>
                     <div class="col-12 col-md-6 border_right">
-                        <p>URI: <code>http://127.0.0.1:8000/api/todos</code></p>
+                        <p>URI: <code>{{ url('/api/todos') }}</code></p>
                         <span class="badge bg-primary" style="border-radius: 0">Example of JS Fetch:</span>
         <pre class="bg-dark text-light p-2">
         var requestOptions = {
@@ -85,9 +65,9 @@
         };
 
         fetch("http://127.0.0.1:8000/api/todos", requestOptions)
-        .then(response =&gt; response.text())
-        .then(result =&gt; console.log(result))
-        .catch(error =&gt; console.log('error', error));
+            .then(response =&gt; response.text())
+            .then(result =&gt; console.log(result))
+            .catch(error =&gt; console.log('error', error));
         </pre>
                     </div>
                     <div class="col-md-1 col-12 text-center border_right">
@@ -100,20 +80,20 @@
     "message": "Data Retrieved Successfully!",
     "data": [
         {
-            "id": 4,
-            "title": "ssdddddddd",
-            "note": "ddd",
-            "comment": "password",
-            "created_at": "2021-08-09 08:08:12 PM",
-            "updated_at": "2021-08-09 08:08:45 PM"
+            "id": 7,
+            "title": "Talk to api 2",
+            "note": "Talk to api 2",
+            "comment": "Talk to api 2",
+            "created_at": "2021-08-30 04:08:21 AM",
+            "updated_at": "2021-08-30 04:08:21 AM"
         },
         {
-            "id": 1,
-            "title": "shahin",
-            "note": "note",
-            "comment": "password",
-            "created_at": "2021-08-09 07:08:30 PM",
-            "updated_at": "2021-08-09 07:08:30 PM"
+            "id": 6,
+            "title": "Talk to api",
+            "note": "Talk to api",
+            "comment": "Talk to api",
+            "created_at": "2021-08-30 04:08:40 AM",
+            "updated_at": "2021-08-30 04:08:40 AM"
         }
     ]
 }
@@ -127,7 +107,7 @@
                         <b>2</b>
                     </div>
                     <div class="col-12 col-md-6 border_right">
-                        <p>URI: <code>http://127.0.0.1:8000/api/todos</code></p>
+                        <p>URI: <code>{{ url('http://127.0.0.1:8000/api/todos') }}</code></p>
                         <span class="badge bg-primary" style="border-radius: 0">Example of JS Fetch:</span>
                         <pre class="bg-dark text-light p-2 ">var formdata = new FormData();
     formdata.append("title", "This is a note.");
@@ -173,7 +153,7 @@
                         <b>3</b>
                     </div>
                     <div class="col-12 col-md-6 border_right">
-                        <p>URI: <code>http://127.0.0.1:8000/api/todos/{id}</code></p>
+                        <p>URI: <code>{{ url('http://127.0.0.1:8000/api/todos/{id}') }}</code></p>
                         <span class="badge bg-primary" style="border-radius: 0">Example of JS Fetch:</span>
                         <pre class="bg-dark text-light p-2 ">var requestOptions = {
         method: 'GET',
@@ -213,7 +193,7 @@
                         <b>4</b>
                     </div>
                     <div class="col-12 col-md-6 border_right">
-                        <p>URI: <code>http://127.0.0.1:8000/api/todos/{id}</code></p>
+                        <p>URI: <code>{{ url('http://127.0.0.1:8000/api/todos/{id}') }}</code></p>
                         <span class="badge bg-primary" style="border-radius: 0">Example of JS Update:</span>
                         <pre class="bg-dark text-light p-2 ">var formdata = new FormData();
     formdata.append("title", "This is a note update.");
@@ -261,7 +241,7 @@
                       <b>5</b>
                   </div>
                   <div class="col-12 col-md-6 border_right">
-                      <p>URI: <code>http://127.0.0.1:8000/api/todos/{id}</code></p>
+                      <p>URI: <code>{{ url('http://127.0.0.1:8000/api/todos/{id}') }}</code></p>
                       <span class="badge bg-primary" style="border-radius: 0">Example of JS Delete:</span>
                       <pre class="bg-dark text-light p-2 ">var formdata = new FormData();
     formdata.append("_method", "delete");
@@ -291,6 +271,26 @@
                       </pre>
                   </div>
               </div>
+
+              <!-- Pagination -->
+<hr>
+              <div class="row" id="PAGINATION">
+                  <div class="col-12">
+                    <div class="alert alert-warning" role="alert">
+                        Pagination API is Coming Soon!!
+                      </div>
+                  </div>
+              </div>
+
+                         <!-- Pagination -->
+<hr>
+<div class="row" id="SEARCH">
+    <div class="col-12">
+      <div class="alert alert-warning" role="alert">
+        Search API is Coming Soon!!
+        </div>
+    </div>
+</div>
             </div>
           </section>
     </div>
