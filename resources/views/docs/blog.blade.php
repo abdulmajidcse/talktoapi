@@ -4,20 +4,26 @@
     <div class="Home">
 
         <h1>#Blog API</h1>
-        {{-- <ul>
+        <ul>
             <li>
                 <h6><a href="#introduction">Introduction</a></h6>
             </li>
             <li>
-                <h6><a href="#howToUse">How to use?</a></h6>
+                <h6><a href="#category">Category</a></h6>
+                <ul>
+                    <li><a href="#getCategories">GET <small>(Fetch all Category)</small></a></li>
+                    <li><a href="#postCategory">POST <small>(Create a Category)</small></a></li>
+                    <li><a href="">GET <small>(Fetch single Category)</small></a></li>
+                    <li><a href="">PUT <small>(Update a Category)</small></a></li>
+                    <li><a href="">DELETE <small>(Delete a Category)</small></a></li>
+                </ul>
             </li>
             <li>
-                <h6><a href="#versionAndDevelopers">Version and Developers</a></h6>
+                <h6><a href="#blogPost">Post(Blog)</a></h6>
             </li>
-        </ul> --}}
+        </ul>
         <hr>
-        <div class="alert alert-warning" role="alert">
-            Coming Soon!!
-          </div>
+        <!-- Category -->
+        @includeIf('includes.blog.category')
     </div>
 @stop
