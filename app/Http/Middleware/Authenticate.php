@@ -32,7 +32,7 @@ class Authenticate extends Middleware
 
         // json response for api routes
         if($request->is('api/*')) {
-            return talkToApiResponse([], 'Unauthorized!', 401, false);
+            return talkToApiResponse(['token' => 'The token is invalid!'], 'Unauthorized!', 401, false);
         }
         // for web routes
         $this->unauthenticated($request, $guards);

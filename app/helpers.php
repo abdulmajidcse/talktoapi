@@ -1,13 +1,21 @@
 <?php
 if (!function_exists('talkToApiResponse')) {
-    function talkToApiResponse($data = [], $message = 'Data Retrieved Successfully!', $status_code = 200, $success = true)
+    function talkToApiResponse($data = [], $message = '', $status_code = 200, $success = true)
     {
-        if ($status_code == 422) {
+        // set message
+        if ($success && !$message) {
+            $message = 'Data Retrieved Successfully!';
+        } else if (!$success && !$message) {
+            $message = 'error occured!';
+        }
+        
+        /// set response
+        if ($success) {
             $response = response()->json(
                 [
                     'success' => $success,
-                    'message' => 'Form input error occured!' . ($message ? ' ' . $message : ''),
-                    'errors' => $data
+                    'message' => $message,
+                    'data'    => $data,
                 ],
                 $status_code
             );
@@ -16,11 +24,12 @@ if (!function_exists('talkToApiResponse')) {
                 [
                     'success' => $success,
                     'message' => $message,
-                    'data' => $data
+                    'errors'  => $data,
                 ],
                 $status_code
             );
         }
+
         return $response;
     }
 }

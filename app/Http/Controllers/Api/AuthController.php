@@ -51,7 +51,7 @@ class AuthController extends Controller
         $credentials = request(['email', 'password']);
 
         if (! $token = auth('api')->attempt($credentials)) {
-            return talkToApiResponse([], 'Unauthorized!', 401, false);
+            return talkToApiResponse(['email' => __('auth.failed')], 'Unauthorized!', 401, false);
         }
 
         return talkToApiResponse($this->respondWithToken($token), 'Access Token generated successfully!');
