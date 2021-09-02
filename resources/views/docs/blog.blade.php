@@ -13,9 +13,9 @@
                 <ul>
                     <li><a href="#getCategories">GET <small>(Fetch all Category)</small></a></li>
                     <li><a href="#postCategory">POST <small>(Create a Category)</small></a></li>
-                    <li><a href="">GET <small>(Fetch single Category)</small></a></li>
-                    <li><a href="">PUT <small>(Update a Category)</small></a></li>
-                    <li><a href="">DELETE <small>(Delete a Category)</small></a></li>
+                    <li><a href="#getCategory">GET <small>(Fetch single Category)</small></a></li>
+                    <li><a href="#putCategory">PUT <small>(Update a Category)</small></a></li>
+                    <li><a href="#deleteCategory">DELETE <small>(Delete a Category)</small></a></li>
                 </ul>
             </li>
             <li>
