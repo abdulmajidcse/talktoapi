@@ -29,9 +29,13 @@
             <!-- Sidebar -->
            @includeIf('includes.sidebar')
 
-            <div class="col-md-9 mt-5 p-3">
+            <div class="col-md-9 mt-5 px-3">
               @yield('app_content')
+              <footer class="bg-light text-center py-3">
+                <p>{{ date('Y') }} &copy; Developed By <a href="https://facebook.com/abdulmajidcse" target="_blank">Abdul Majid</a> & <a href="https://tutspack.com/" target="_blank">Shahin</a></p>
+              </footer>
             </div> <!-- col-9 -->
+
         </div>
         </div>
 
