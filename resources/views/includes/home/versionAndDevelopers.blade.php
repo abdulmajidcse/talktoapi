@@ -1,4 +1,9 @@
 <div class="mt-2" id="versionAndDevelopers">
     <h3>#Version and Developers?</h3>
-    <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, eum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus doloremque nam cumque laborum sequi dolor. Dignissimos nisi distinctio ad labore repudiandae nam corrupti similique perspiciatis, impedit deleniti repellendus quia amet consequuntur accusamus ex expedita hic doloribus? Distinctio, incidunt id harum eaque voluptatibus est recusandae et laborum corrupti ut omnis blanditiis. Officiis, provident? Ab veniam non similique repellat odio aspernatur optio dolores maiores consectetur rerum harum eligendi eos doloremque, laudantium quod omnis praesentium sed? Obcaecati sed ullam impedit beatae unde nulla rerum veniam nihil numquam vel deserunt repellat vitae odit soluta accusamus, harum maiores aspernatur facilis sapiente eaque omnis. Voluptatibus ducimus quos eos quis tempora exercitationem? Hic reiciendis magni facilis laborum atque fuga dolor saepe. Dicta quasi molestias saepe nostrum perspiciatis et ad ex tempora amet, at, assumenda nobis quod placeat. Dolore, aliquid provident soluta illum accusantium, nostrum assumenda amet architecto velit dolorem dolorum aspernatur aut quas. Aspernatur minima voluptas, officia laudantium provident totam quisquam possimus, sunt repellendus expedita obcaecati voluptatum recusandae voluptates maxime deleniti autem eos omnis perspiciatis modi  </p>
+    <p class="lead">Well, Right now Our API version is <b><i>V1.0.0</i></b>
+        . In this version you can get <b>TODO API</b>, <b>Authentication API</b> and <b>Blog API</b>. In next version we will upload <b>Ecommerce API</b>.
+    </p>
+    <p class="lead">
+        This API is developed by <a href="https://www.facebook.com/profile.php?id=100025240025112">Shahin</a> and <a href="https://www.facebook.com/abdulmajidcse">Majid</a>. If you would like to contribute this Open Source Project then contact with us.
+    </p>
 </div>
