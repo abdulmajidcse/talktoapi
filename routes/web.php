@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::name('web.')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('docs', [HomeController::class, 'docs'])->name('docs');
     Route::get('todos', [HomeController::class, 'todos'])->name('todos');
     Route::get('authentication', [HomeController::class, 'authentication'])->name('authentication');
     Route::get('blog', [HomeController::class, 'blog'])->name('blog');

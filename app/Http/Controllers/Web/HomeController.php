@@ -11,11 +11,6 @@ class HomeController extends Controller
         return view('docs.home');
     }
 
-    public function docs()
-    {
-        return view('docs.docs');
-    }
-
     public function todos()
     {
         return view('docs.todo');

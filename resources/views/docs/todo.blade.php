@@ -25,12 +25,6 @@
                     <li>
                         <h6><a href="#DELETE">DELETE <span class="small">(Delete a Todo)</span></a></h6>
                     </li>
-                    <li>
-                        <h6><a href="#PAGINATION">Pagination <span class="small">(Fetch all Todos with Paginaitons)</span></a></h6>
-                    </li>
-                    <li>
-                        <h6><a href="#SEARCH">Search <span class="small">(Search Todo by Name))</span></a></h6>
-                    </li>
                 </ul>
 
             </li>
@@ -272,25 +266,6 @@
                   </div>
               </div>
 
-              <!-- Pagination -->
-<hr>
-              <div class="row" id="PAGINATION">
-                  <div class="col-12">
-                    <div class="alert alert-warning" role="alert">
-                        Pagination API is Coming Soon!!
-                      </div>
-                  </div>
-              </div>
-
-                         <!-- Pagination -->
-<hr>
-<div class="row" id="SEARCH">
-    <div class="col-12">
-      <div class="alert alert-warning" role="alert">
-        Search API is Coming Soon!!
-        </div>
-    </div>
-</div>
             </div>
           </section>
     </div>
