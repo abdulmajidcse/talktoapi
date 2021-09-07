@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\FallbackController;
 use App\Http\Controllers\Web\HomeController;
 use Illuminate\Support\Facades\Route;
 
