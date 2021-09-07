@@ -2,7 +2,7 @@
     <div class="container">
        <div id="postIntroduction">
         <h5 class="text-info">Post API</h5>
-        <p>In this API we are going to see <b>Post</b>. To access Blog API first, you have to login your account. If you don't have account,create an <a href="{{ route('web.authentication') }}">account</a>. In this blog api you can create post as well create post accorting to post.</p>
+        <p>In this API we are going to see <b>Blog</b>. To access Blog API first, you have to login your account. If you don't have account,create an <a href="{{ route('web.authentication') }}">account</a>. In this blog api you can create post as well create post accorting to post. Before creating post you have to create couple of <a href="#introduction">category</a>.</p>
        </div>
 
        <h4>API Request:</h4>

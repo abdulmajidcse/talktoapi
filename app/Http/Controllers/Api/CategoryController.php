@@ -29,11 +29,17 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|unique:categories,name',
+            'name' => 'required|string',
         ]);
 
         if ($validator->fails()) {
             return talkToApiResponse($validator->getMessageBag(), '', 422, false);
+        }
+
+        // check category name is already exist or not
+        $categoryExist = Category::where('user_id', auth('api')->id())->where('name', $request->input('name'))->first();
+        if ($categoryExist) {
+            return talkToApiResponse(['name' => 'The name is already exist.'], '', 422, false);
         }
 
         $category = Category::create([
@@ -53,7 +59,6 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         if ($category->user_id == auth('api')->id()) {
-            //  return $category->load('posts');
             return talkToApiResponse($category->load('posts'));
         }
 
@@ -70,11 +75,17 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|unique:categories,name,' . $category->id,
+            'name' => 'required|string',
         ]);
 
         if ($validator->fails()) {
             return talkToApiResponse($validator->getMessageBag(), '', 422, false);
+        }
+
+        // check category name is already exist or not
+        $categoryExist = Category::where('user_id', auth('api')->id())->where('id', '!=', $category->id)->where('name', $request->input('name'))->first();
+        if ($categoryExist) {
+            return talkToApiResponse(['name' => 'The name is already exist.'], '', 422, false);
         }
 
         if ($category->user_id == auth('api')->id()) {
