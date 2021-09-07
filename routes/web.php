@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\FallbackController;
 use App\Http\Controllers\Web\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,5 +20,4 @@ Route::name('web.')->group(function () {
     Route::get('todos', [HomeController::class, 'todos'])->name('todos');
     Route::get('authentication', [HomeController::class, 'authentication'])->name('authentication');
     Route::get('blog', [HomeController::class, 'blog'])->name('blog');
-    Route::get('contact', [ContactController::class, 'index'])->name('contact');
 });
