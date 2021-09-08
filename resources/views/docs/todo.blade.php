@@ -52,17 +52,9 @@
                     <div class="col-12 col-md-6 border_right">
                         <p>URI: <code>{{ talktoapiUrl('todos') }}</code></p>
                         <span class="badge bg-primary" style="border-radius: 0">Example of JS Fetch:</span>
-        <pre class="bg-dark text-light p-2">
-        var requestOptions = {
-            method: 'GET',
-            redirect: 'follow'
-        };
-
-        fetch("{{ talktoapiUrl('todos') }}", requestOptions)
-            .then(response =&gt; response.text())
-            .then(result =&gt; console.log(result))
-            .catch(error =&gt; console.log('error', error));
-        </pre>
+                        <pre class="bg-dark text-light p-2">
+<x-api-request-example apiUrl="{{ talktoapiUrl('todos') }}" method="get" />
+                        </pre>
                     </div>
                     <div class="col-md-1 col-12 text-center border_right">
                         <span class="badge bg-success">GET</span>
@@ -101,24 +93,15 @@
                         <b>2</b>
                     </div>
                     <div class="col-12 col-md-6 border_right">
-                        <p>URI: <code>{{ url('http://127.0.0.1:8000/api/todos') }}</code></p>
+                        <p>URI: <code>{{ talktoapiUrl('todos') }}</code></p>
                         <span class="badge bg-primary" style="border-radius: 0">Example of JS Fetch:</span>
-                        <pre class="bg-dark text-light p-2 ">var formdata = new FormData();
-    formdata.append("title", "This is a note.");
-    formdata.append("note", "Today note details");
-    formdata.append("comment", "not required.");
-
-    var requestOptions = {
-    method: 'POST',
-    body: formdata,
-    redirect: 'follow'
-    };
-
-    fetch("http://127.0.0.1:8000/api/todos", requestOptions)
-    .then(response =&gt; response.text())
-    .then(result =&gt; console.log(result))
-    .catch(error =&gt; console.log('error', error));
-                            </pre>
+                        <pre class="bg-dark text-light p-2 ">
+var formdata = new FormData();
+formdata.append("title", "This is a note.");
+formdata.append("note", "Today note details");
+formdata.append("comment", "not required.");
+<x-api-request-example apiUrl="{{ talktoapiUrl('todos') }}" method="post" formDataIs="true" />
+                        </pre>
                     </div>
                     <div class="col-md-1 col-12 text-center border_right">
                         <span class="badge bg-success">POST</span>
