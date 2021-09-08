@@ -38,25 +38,14 @@
                 <!-- Register -->
                 <x-docs.section id="Register">
                     <x-slot name="number">1</x-slot>
-                    <x-slot name="url">{{ url('/api/register') }}</x-slot>
-                    {{-- <x-slot name="title">title</x-slot> --}}
+                    <x-slot name="url">{{ talktoapiUrl('register') }}</x-slot>
                     <x-slot name="request">
-                    var formdata = new FormData();
-    formdata.append("name", "AR Shahin");
-    formdata.append("email", "shahin@mail.com");
-    formdata.append("password", "12345678");
-    formdata.append("password_confirmation", "12345678");
-
-    var requestOptions = {
-        method: 'POST',
-        body: formdata,
-        redirect: 'follow'
-        };
-
-        fetch("{{ url('http://127.0.0.1:8000/api/register') }}", requestOptions)
-            .then(response => response.text())
-            .then(result => console.log(result))
-            .catch(error => console.log('error', error));
+var formdata = new FormData();
+formdata.append("name", "AR Shahin");
+formdata.append("email", "shahin@mail.com");
+formdata.append("password", "12345678");
+formdata.append("password_confirmation", "12345678");
+<x-api-request-example apiUrl="{{ talktoapiUrl('register') }}" method="post" formDataIs="true" />
                     </x-slot>
                     <x-slot name="method">POST</x-slot>
                     <x-slot name="response">
@@ -72,29 +61,13 @@
                       <!-- Login -->
                       <x-docs.section id="Login">
                         <x-slot name="number">2</x-slot>
-                        <x-slot name="url">{{ url('/api/login') }}</x-slot>
+                        <x-slot name="url">{{ talktoapiUrl('login')  }}</x-slot>
                         {{-- <x-slot name="title">title</x-slot> --}}
                         <x-slot name="request">
 var formdata = new FormData();
-    formdata.append("email", "ars@mail.com");
-    formdata.append("password", "12345678");
-
-    var requestOptions = {
-    method: 'POST',
-    body: formdata,
-    redirect: 'follow'
-    };
-
-    var requestOptions = {
-    method: 'POST',
-    body: formdata,
-    redirect: 'follow'
-    };
-
-fetch("{{ url('http://127.0.0.1:8000/api/login') }}", requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
+formdata.append("email", "ars@mail.com");
+formdata.append("password", "12345678");
+<x-api-request-example apiUrl="{{ talktoapiUrl('login') }}" method="post" formDataIs="true" />
                         </x-slot>
                         <x-slot name="method">POST</x-slot>
                         <x-slot name="response">
@@ -113,18 +86,9 @@ fetch("{{ url('http://127.0.0.1:8000/api/login') }}", requestOptions)
                      <!-- MyProfile -->
                      <x-docs.section id="MyProfile">
                         <x-slot name="number">3</x-slot>
-                        <x-slot name="url">{{ url('/api/user?token={access_token}') }}</x-slot>
-                        {{-- <x-slot name="title">title</x-slot> --}}
+                        <x-slot name="url">{{ talktoapiUrl('user?token={access_token}') }}</x-slot>
                         <x-slot name="request">
-var requestOptions = {
-    method: 'GET',
-    redirect: 'follow'
-    };
-
-    fetch("{{ url('http://127.0.0.1:8000/api/user?token={access_token}') }}", requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+<x-api-request-example apiUrl="{{ talktoapiUrl('user?token={access_token}') }}" method="get"/>
                         </x-slot>
                         <x-slot name="method">GET</x-slot>
                         <x-slot name="response">
@@ -146,18 +110,9 @@ var requestOptions = {
                     <!-- Logout -->
                     <x-docs.section id="Logout">
                         <x-slot name="number">4</x-slot>
-                        <x-slot name="url">{{ url('http://127.0.0.1:8000/api/logout?token={access_token}') }}</x-slot>
-                        {{-- <x-slot name="title">title</x-slot> --}}
+                        <x-slot name="url">{{ talktoapiUrl('logout?token={access_token}')}}</x-slot>
                         <x-slot name="request">
-var requestOptions = {
-    method: 'POST',
-    redirect: 'follow'
-    };
-
-    fetch("{{ url('http://127.0.0.1:8000/api/logout?token={access_token}') }}", requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+<x-api-request-example apiUrl="{{ talktoapiUrl('logout?token={access_token}') }}" method="post" formDataIs="true" />
                         </x-slot>
                         <x-slot name="method">POST</x-slot>
                         <x-slot name="response">

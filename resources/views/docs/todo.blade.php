@@ -131,18 +131,11 @@ formdata.append("comment", "not required.");
                         <b>3</b>
                     </div>
                     <div class="col-12 col-md-6 border_right">
-                        <p>URI: <code>{{ url('http://127.0.0.1:8000/api/todos/{id}') }}</code></p>
+                        <p>URI: <code>{{ talktoapiUrl('todos/{id}') }}</code></p>
                         <span class="badge bg-primary" style="border-radius: 0">Example of JS Fetch:</span>
-                        <pre class="bg-dark text-light p-2 ">var requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
-        };
-
-        fetch("http://127.0.0.1:8000/api/todos/3", requestOptions)
-        .then(response =&gt; response.text())
-        .then(result =&gt; console.log(result))
-        .catch(error =&gt; console.log('error', error));
-        </pre>
+                        <pre class="bg-dark text-light p-2 ">
+<x-api-request-example apiUrl="{{ talktoapiUrl('todos/{id}') }}" method="get" />
+                        </pre>
                     </div>
                     <div class="col-md-1 col-12 text-center border_right">
                         <span class="badge bg-success">GET</span>
@@ -171,25 +164,16 @@ formdata.append("comment", "not required.");
                         <b>4</b>
                     </div>
                     <div class="col-12 col-md-6 border_right">
-                        <p>URI: <code>{{ url('http://127.0.0.1:8000/api/todos/{id}') }}</code></p>
+                        <p>URI: <code>{{ talktoapiUrl('todos/{id}') }}</code></p>
                         <span class="badge bg-primary" style="border-radius: 0">Example of JS Update:</span>
-                        <pre class="bg-dark text-light p-2 ">var formdata = new FormData();
-    formdata.append("title", "This is a note update.");
-    formdata.append("note", "Today note details");
-    formdata.append("comment", "not required.");
-    formdata.append("_method", "put");
-
-    var requestOptions = {
-    method: 'POST',
-    body: formdata,
-    redirect: 'follow'
-    };
-
-    fetch("http://127.0.0.1:8000/api/todos/3", requestOptions)
-    .then(response =&gt; response.text())
-    .then(result =&gt; console.log(result))
-    .catch(error =&gt; console.log('error', error));
-    </pre>
+                        <pre class="bg-dark text-light p-2 ">
+var formdata = new FormData();
+formdata.append("title", "This is a note update.");
+formdata.append("note", "Today note details");
+formdata.append("comment", "not required.");
+formdata.append("_method", "put");
+<x-api-request-example apiUrl="{{ talktoapiUrl('todos/{id}') }}" method="post" formDataIs="true" />
+                        </pre>
                     </div>
                     <div class="col-md-1 col-12 text-center border_right">
                         <span class="badge bg-success">PUT</span>
@@ -221,20 +205,11 @@ formdata.append("comment", "not required.");
                   <div class="col-12 col-md-6 border_right">
                       <p>URI: <code>{{ url('http://127.0.0.1:8000/api/todos/{id}') }}</code></p>
                       <span class="badge bg-primary" style="border-radius: 0">Example of JS Delete:</span>
-                      <pre class="bg-dark text-light p-2 ">var formdata = new FormData();
-    formdata.append("_method", "delete");
-
-    var requestOptions = {
-    method: 'POST',
-    body: formdata,
-    redirect: 'follow'
-    };
-
-    fetch("http://127.0.0.1:8000/api/todos/3", requestOptions)
-    .then(response =&gt; response.text())
-    .then(result =&gt; console.log(result))
-    .catch(error =&gt; console.log('error', error));
-    </pre>
+                      <pre class="bg-dark text-light p-2 ">
+var formdata = new FormData();
+formdata.append("_method", "delete");
+<x-api-request-example apiUrl="{{ talktoapiUrl('todos/{id}') }}" method="post" formDataIs="true" />
+                    </pre>
                   </div>
                   <div class="col-md-1 col-12 text-center border_right">
                       <span class="badge bg-success">DELETE</span>

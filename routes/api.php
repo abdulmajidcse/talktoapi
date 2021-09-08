@@ -31,7 +31,7 @@ Route::name('api.')->group(function() {
 
         Route::middleware('auth:api')->group(function() {
             Route::get('user', [AuthController::class, 'user'])->name('user');
-            Route::post('refresh', [AuthController::class, 'refresh'])->name('refresh');
+            // Route::post('refresh', [AuthController::class, 'refresh'])->name('refresh');
             Route::post('logout', [AuthController::class, 'logout'])->name('logout');
             // category crud routes
             Route::apiResource('categories', CategoryController::class);

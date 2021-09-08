@@ -14,18 +14,9 @@
        <!-- get all category -->
         <x-docs.section id="getCategories">
             <x-slot name="number">1</x-slot>
-            <x-slot name="url">{{ url('/api/categories?token={access_token}') }}</x-slot>
-            {{-- <x-slot name="title">title</x-slot> --}}
+            <x-slot name="url">{{ talktoapiUrl('categories?token={access_token}') }}</x-slot>
             <x-slot name="request">
-var requestOptions = {
-method: 'GET',
-redirect: 'follow'
-};
-
-fetch("{{ url('/api/categories?token={access_token}') }}", requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
+<x-api-request-example apiUrl="{{ talktoapiUrl('categories?token={access_token}') }}" method="get" />
             </x-slot>
             <x-slot name="method">GET</x-slot>
             <x-slot name="response">
@@ -49,22 +40,11 @@ fetch("{{ url('/api/categories?token={access_token}') }}", requestOptions)
      <!-- post a category -->
      <x-docs.section id="postCategory">
         <x-slot name="number">2</x-slot>
-        <x-slot name="url">{{ url('/api/categories?token={access_token}') }}</x-slot>
-        {{-- <x-slot name="title">title</x-slot> --}}
+        <x-slot name="url">{{ talktoapiUrl('categories?token={access_token}') }}</x-slot>
         <x-slot name="request">
 var formdata = new FormData();
 formdata.append("name", "Laravel");
-
-var requestOptions = {
-method: 'POST',
-body: formdata,
-redirect: 'follow'
-};
-
-fetch("{{ url('/api/categories?token={access_token}') }}", requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
+<x-api-request-example apiUrl="{{ talktoapiUrl('categories?token={access_token}') }}" method="post" formDataIs="true" />
         </x-slot>
         <x-slot name="method">POST</x-slot>
         <x-slot name="response">
@@ -86,18 +66,9 @@ fetch("{{ url('/api/categories?token={access_token}') }}", requestOptions)
      <!-- get a category -->
      <x-docs.section id="getCategory">
         <x-slot name="number">3</x-slot>
-        <x-slot name="url">{{ url('/api/categories/{id}?token={access_token}') }}</x-slot>
-        {{-- <x-slot name="title">title</x-slot> --}}
+        <x-slot name="url">{{ talktoapiUrl('categories/{id}?token={access_token}') }}</x-slot>
         <x-slot name="request">
-    var requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
-        };
-
-fetch("{{ url('/api/categories/{id}?token={access_token}') }}", requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
+<x-api-request-example apiUrl="{{ talktoapiUrl('categories/{id}?token={access_token}') }}" method="get" />
         </x-slot>
         <x-slot name="method">GET</x-slot>
         <x-slot name="response">
@@ -119,24 +90,13 @@ fetch("{{ url('/api/categories/{id}?token={access_token}') }}", requestOptions)
   <!-- update a category -->
   <x-docs.section id="putCategory">
     <x-slot name="number">4</x-slot>
-    <x-slot name="url">{{ url('/api/categories?token={access_token}') }}</x-slot>
+    <x-slot name="url">{{ talktoapiUrl('categories/{id}?token={access_token}') }}</x-slot>
     {{-- <x-slot name="title">title</x-slot> --}}
     <x-slot name="request">
-        var formdata = new FormData();
-        formdata.append("name", "Lumen Update");
-        formdata.append("_method", "put");
-
-        var requestOptions = {
-        method: 'POST',
-        body: formdata,
-        redirect: 'follow'
-        };
-
-
-fetch("{{ url('/api/categories?token={access_token}') }}", requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
+var formdata = new FormData();
+formdata.append("name", "Lumen Update");
+formdata.append("_method", "put");
+<x-api-request-example apiUrl="{{ talktoapiUrl('categories/{id}?token={access_token}') }}" method="post" formDataIs="true" />
     </x-slot>
     <x-slot name="method">PUT</x-slot>
     <x-slot name="response">
@@ -156,23 +116,11 @@ fetch("{{ url('/api/categories?token={access_token}') }}", requestOptions)
   <!-- detete a category -->
   <x-docs.section id="deleteCategory">
     <x-slot name="number">5</x-slot>
-    <x-slot name="url">{{ url('/api/categories?token={access_token}') }}</x-slot>
-    {{-- <x-slot name="title">title</x-slot> --}}
+    <x-slot name="url">{{ talktoapiUrl('categories/{id}?token={access_token}') }}</x-slot>
     <x-slot name="request">
-        var formdata = new FormData();
+var formdata = new FormData();
 formdata.append("_method", "delete");
-
-    var requestOptions = {
-    method: 'POST',
-    body: formdata,
-    redirect: 'follow'
-    };
-
-
-fetch("{{ url('/api/categories?token={access_token}') }}", requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
+<x-api-request-example apiUrl="{{ talktoapiUrl('categories/{id}?token={access_token}') }}" method="post" formDataIs="true" />
     </x-slot>
     <x-slot name="method">DELETE</x-slot>
     <x-slot name="response">

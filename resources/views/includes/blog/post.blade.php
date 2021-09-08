@@ -13,18 +13,10 @@
        <!-- get all post -->
         <x-docs.section id="getPosts">
             <x-slot name="number">1</x-slot>
-            <x-slot name="url">{{ url('/api/posts?token={access_token}') }}</x-slot>
+            <x-slot name="url">{{ talktoapiUrl('posts?token={access_token}') }}</x-slot>
             {{-- <x-slot name="title">title</x-slot> --}}
             <x-slot name="request">
-var requestOptions = {
-    method: 'GET',
-    redirect: 'follow'
-    };
-
-fetch("{{ url('/api/Posts?token={access_token}') }}", requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
+<x-api-request-example apiUrl="{{ talktoapiUrl('posts?token={access_token}') }}" method="get" />
             </x-slot>
             <x-slot name="method">GET</x-slot>
             <x-slot name="response">
@@ -55,7 +47,7 @@ fetch("{{ url('/api/Posts?token={access_token}') }}", requestOptions)
      <!-- post a post -->
      <x-docs.section id="postCreate">
         <x-slot name="number">2</x-slot>
-        <x-slot name="url">{{ url('/api/Posts?token={access_token}') }}</x-slot>
+        <x-slot name="url">{{ talktoapiUrl('posts?token={access_token}') }}</x-slot>
         {{-- <x-slot name="title">title</x-slot> --}}
         <x-slot name="request">
 var formdata = new FormData();
@@ -63,18 +55,10 @@ formdata.append("category_id", "2");
 formdata.append("title", "This is a demo post");
 formdata.append("content", "Welcome to 'TalkToAPI'. It's a free app and open source where you can test api with your local development project. And also get real life API project experience");
 // image field are optional. You can get image from user form or skip image field.
-formdata.append("image", fileInput.files[0], "/C:/Users/php/Pictures/color-testimage.png");
-
-var requestOptions = {
-method: 'POST',
-body: formdata,
-redirect: 'follow'
-};
-
-fetch("{{ url('/api/posts?token={access_token}') }}", requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
+// for your project, you have to get your image input tag and retrieve actual image file. Then append in 'image'
+// var fileInput = document.getElementById('imageFile');
+formdata.append("image", fileInput.files[0]);
+<x-api-request-example apiUrl="{{ talktoapiUrl('posts?token={access_token}') }}" method="post" formDataIs="true" />
         </x-slot>
         <x-slot name="method">POST</x-slot>
         <x-slot name="response">
@@ -97,18 +81,10 @@ fetch("{{ url('/api/posts?token={access_token}') }}", requestOptions)
      <!-- get a post -->
      <x-docs.section id="getpost">
         <x-slot name="number">3</x-slot>
-        <x-slot name="url">{{ url('/api/posts/{id}?token={access_token}') }}</x-slot>
+        <x-slot name="url">{{ talktoapiUrl('posts/{id}?token={access_token}') }}</x-slot>
         {{-- <x-slot name="title">title</x-slot> --}}
         <x-slot name="request">
-var requestOptions = {
-    method: 'GET',
-    redirect: 'follow'
-    };
-
-fetch("{{ url('/api/posts/{id}?token={access_token}') }}", requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
+<x-api-request-example apiUrl="{{ talktoapiUrl('posts/{id}?token={access_token}') }}" method="get" />
         </x-slot>
         <x-slot name="method">GET</x-slot>
         <x-slot name="response">
@@ -134,25 +110,16 @@ fetch("{{ url('/api/posts/{id}?token={access_token}') }}", requestOptions)
     <x-slot name="url">{{ url('/api/posts?token={access_token}') }}</x-slot>
     {{-- <x-slot name="title">title</x-slot> --}}
     <x-slot name="request">
-        var formdata = new FormData();
-            formdata.append("category_id", "3");
-            formdata.append("title", "This is a post title Update.");
-            formdata.append("content", "This is post content Update.");
-        // image field are optional. You can get image from user form or skip image field.
-        formdata.append("image", fileInput.files[0], "/C:/Users/php/Pictures/color-update.png");
-        formdata.append("_method", "put");
-
-        var requestOptions = {
-        method: 'POST',
-        body: formdata,
-        redirect: 'follow'
-        };
-
-
-fetch("{{ url('/api/Posts?token={access_token}') }}", requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
+var formdata = new FormData();
+formdata.append("category_id", "3");
+formdata.append("title", "This is a post title Update.");
+formdata.append("content", "This is post content Update.");
+// image field are optional. You can get image from user form or skip image field.
+// for your project, you have to get your image input tag and retrieve actual image file. Then append in 'image'
+// var fileInput = document.getElementById('imageFile');
+formdata.append("image", fileInput.files[0]);
+formdata.append("_method", "put");
+<x-api-request-example apiUrl="{{ talktoapiUrl('posts/{id}?token={access_token}') }}" method="post" formDataIs="true" />
     </x-slot>
     <x-slot name="method">PUT</x-slot>
     <x-slot name="response">
@@ -173,23 +140,12 @@ fetch("{{ url('/api/Posts?token={access_token}') }}", requestOptions)
   <!-- detete a post -->
   <x-docs.section id="deletePost">
     <x-slot name="number">5</x-slot>
-    <x-slot name="url">{{ url('/api/posts/{id}?token={access_token}') }}</x-slot>
+    <x-slot name="url">{{ talktoapiUrl('posts/{id}?token={access_token}') }}</x-slot>
     {{-- <x-slot name="title">title</x-slot> --}}
     <x-slot name="request">
-        var formdata = new FormData();
+var formdata = new FormData();
 formdata.append("_method", "delete");
-
-    var requestOptions = {
-    method: 'POST',
-    body: formdata,
-    redirect: 'follow'
-    };
-
-
-fetch("{{ url('/api/posts/{id}?token={access_token}') }}", requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
+<x-api-request-example apiUrl="{{ talktoapiUrl('posts/{id}?token={access_token}') }}" method="post" formDataIs="true" />
     </x-slot>
     <x-slot name="method">DELETE</x-slot>
     <x-slot name="response">
