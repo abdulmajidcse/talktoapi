@@ -1,9 +1,10 @@
 <section id="blog">
     <div class="container">
        <div id="introduction">
-        <h5 class="text-info">Blog</h5>
-        <p>In this API we are going to see <b>Blog</b>. To access Blog API first, you have to login your account. If you don't have account,create an <a href="{{ route('web.authentication') }}">account</a>. In this blog api you can create category as well create post accorting to category.</p>
-       </div>
+            <h5 class="text-info">Category API</h5>
+            <p>In this API we are going to see <b>Blog</b>. To access Blog API first, you have to login your account. If you don't have account,create an <a href="{{ route('web.authentication') }}">account</a>. In this blog api you can create category as well create post accorting to category.</p>
+            <x-reactjs-example />
+        </div>
 
        <h4>API Request:</h4>
        <hr>

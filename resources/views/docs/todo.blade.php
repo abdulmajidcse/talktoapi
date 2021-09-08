@@ -36,7 +36,8 @@
             <div class="container">
                 <div id="introduction">
                     <h5 class="text-info">Todo List</h5>
-                    <p>This is an example API of ToDo list without authentications. Using this API you can do full <b>CRUD</b> operations as well <b>paginations</b> and <b>searching</b>.</p>
+                    <p>This is an example API of ToDo list without authentications. Using this API you can do full <b>CRUD</b> operations.</p>
+                    <x-reactjs-example />
                 </div>
                 <h4>API Request:</h4>
                 <hr>

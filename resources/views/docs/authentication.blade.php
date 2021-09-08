@@ -27,6 +27,7 @@
                 <div id="introduction">
                     <h5 class="text-info">Authentication</h5>
                     <p>In this API we are going to see <b>Authentication</b>. To access authenticated API first, you have to create an account. After creating an account then you have to login. The login method returns an access token which you will use whenever send a request for authenticating API. You have to send this access token by query parameter.</p>
+                    <x-reactjs-example />
                 </div>
                 <h4>API Request:</h4>
                 <hr>
