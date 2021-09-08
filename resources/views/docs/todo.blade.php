@@ -50,7 +50,7 @@
                         <b>1</b>
                     </div>
                     <div class="col-12 col-md-6 border_right">
-                        <p>URI: <code>{{ url('/api/todos') }}</code></p>
+                        <p>URI: <code>{{ talktoapiUrl('todos') }}</code></p>
                         <span class="badge bg-primary" style="border-radius: 0">Example of JS Fetch:</span>
         <pre class="bg-dark text-light p-2">
         var requestOptions = {
@@ -58,7 +58,7 @@
             redirect: 'follow'
         };
 
-        fetch("http://127.0.0.1:8000/api/todos", requestOptions)
+        fetch("{{ talktoapiUrl('todos') }}", requestOptions)
             .then(response =&gt; response.text())
             .then(result =&gt; console.log(result))
             .catch(error =&gt; console.log('error', error));

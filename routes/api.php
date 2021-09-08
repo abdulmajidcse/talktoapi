@@ -18,24 +18,26 @@ use App\Http\Controllers\Api\TodoController;
 */
 
 Route::name('api.')->group(function() {
-    Route::apiResource('todos', TodoController::class);
+    
+    Route::name('v1.')->prefix('v1')->group(function() {
+        Route::apiResource('todos', TodoController::class);
+        /**
+         * Authenticate routes
+         */
+        Route::middleware('guest:api')->group(function() {
+            Route::post('register', [AuthController::class, 'register'])->name('register');
+            Route::post('login', [AuthController::class, 'login'])->name('login');
+        });
 
-    /**
-     * Authenticate routes
-     */
-    Route::middleware('guest:api')->group(function() {
-        Route::post('register', [AuthController::class, 'register'])->name('register');
-        Route::post('login', [AuthController::class, 'login'])->name('login');
-    });
-
-    Route::middleware('auth:api')->group(function() {
-        Route::get('user', [AuthController::class, 'user'])->name('user');
-        Route::post('refresh', [AuthController::class, 'refresh'])->name('refresh');
-        Route::post('logout', [AuthController::class, 'logout'])->name('logout');
-        // category crud routes
-        Route::apiResource('categories', CategoryController::class);
-        // post crud routes
-        Route::apiResource('posts', PostController::class);
+        Route::middleware('auth:api')->group(function() {
+            Route::get('user', [AuthController::class, 'user'])->name('user');
+            Route::post('refresh', [AuthController::class, 'refresh'])->name('refresh');
+            Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+            // category crud routes
+            Route::apiResource('categories', CategoryController::class);
+            // post crud routes
+            Route::apiResource('posts', PostController::class);
+        });
     });
 
 });

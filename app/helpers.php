@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * API response
+ */
+
 if (!function_exists('talkToApiResponse')) {
     function talkToApiResponse($data = [], $message = '', $status_code = 200, $success = true)
     {
@@ -31,5 +36,27 @@ if (!function_exists('talkToApiResponse')) {
         }
 
         return $response;
+    }
+}
+
+
+/**
+ * API url prefix
+ */
+
+if (!function_exists('talktoapiUrl')) {
+    function talktoapiUrl(string $uri, string $version = 'v1')
+    {
+        $uriPart = 'api/' . trim($version, '/');
+        $apiUrlPrefix = url($uriPart);
+
+        $trimedUri = trim($uri, '/');
+        if ($trimedUri) {
+            $apiUrl = $apiUrlPrefix . '/' . $trimedUri;
+        } else {
+            $apiUrl = $apiUrlPrefix;
+        }
+
+        return $apiUrl;
     }
 }
