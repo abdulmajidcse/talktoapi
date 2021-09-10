@@ -25,7 +25,7 @@
             width: 40px;
             background: #2c3e50e0;
             position: fixed;
-            right: 2%;
+            left: 2%;
             bottom: 2%;
             display: flex;
             justify-content: center;
