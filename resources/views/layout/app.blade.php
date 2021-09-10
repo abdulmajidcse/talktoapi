@@ -43,6 +43,15 @@
             margin-top: -5px;
 
         }
+        #sideBar{
+            min-height: 100vh
+        }
+        @media only screen and (max-width:480px){
+            #sideBar{
+            min-height: auto;
+            padding-bottom: 15px;
+        }
+        }
 
     </style>
       <title>@yield('title') | TalkToApi | Docs</title>

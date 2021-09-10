@@ -1,4 +1,4 @@
-<div class="col-md-3 bg-light" style="min-height: 100vh">
+<div class="col-md-3 bg-light" id="sideBar">
     <div class="text-center mt-5">
      <a href="{{ route('web.home') }}"><img src="{{ asset('assets/static-uploads/talk-to-api.png') }}" alt="{{ config('app.name') }}"></a>
     </div>
