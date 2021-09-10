@@ -4,6 +4,6 @@
         . In this version you can get <b>TODO API</b>, <b>Authentication API</b> and <b>Blog API</b>.
     </p>
     <p class="lead">
-        This API is developed by <a href="https://www.facebook.com/profile.php?id=100025240025112">Shahin</a> and <a href="https://www.facebook.com/abdulmajidcse">Majid</a>. If you would like to contribute this Open Source Project then contact with us.
+        This API is developed by <a href="https://www.facebook.com/profile.php?id=100025240025112">Shahin</a> and <a href="https://www.facebook.com/abdulmajidcse">Majid</a>. If you would like to contribute this Open Source Project then <a href="https://facebook.com/talktoapi">contact with us</a>.
     </p>
 </div>
