@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,13 +15,15 @@
         /* .text-justify {
             text-align: justify;
         } */
-        a{
-          text-decoration: none
+        a {
+            text-decoration: none
         }
-        .border_right{
+
+        .border_right {
             border-right: 1px solid #ccc;
         }
-        #scrollTop{
+
+        #scrollTop {
             height: 40px;
             width: 40px;
             background: #2c3e50e0;
@@ -34,46 +37,53 @@
             border-radius: 2px;
             transition: .6s;
         }
-       #scrollTop a{
-        color: #fff;
-        transition: .3s;
-        transform: scale(1.3)
-    }
-        #scrollTop:hover a{
+
+        #scrollTop a {
+            color: #fff;
+            transition: .3s;
+            transform: scale(1.3)
+        }
+
+        #scrollTop:hover a {
             margin-top: -5px;
 
         }
-        #sideBar{
+
+        #sideBar {
             min-height: 100vh
         }
-        @media only screen and (max-width:480px){
-            #sideBar{
-            min-height: auto;
-            padding-bottom: 15px;
-        }
+
+        @media only screen and (max-width:480px) {
+            #sideBar {
+                min-height: auto;
+                padding-bottom: 15px;
+            }
         }
 
     </style>
-      <title>@yield('title') | TalkToApi | Docs</title>
-  </head>
-  <body id="app">
+    <title>@yield('title') | TalkToApi | Docs</title>
+</head>
+
+<body id="app">
 
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
-           @includeIf('includes.sidebar')
+            @includeIf('includes.sidebar')
 
             <div class="col-md-9 mt-5 px-3">
-              @yield('app_content')
-              <footer class="bg-light text-center py-3 ">
-                <p>{{ date('Y') }} &copy; Developed By <a href="https://abdulmajid.me">Abdul Majid</a> & <a href="https://tutspack.com/">Shahin</a></p>
-              </footer>
+                @yield('app_content')
+                <footer class="bg-light text-center py-3 ">
+                    <p>{{ date('Y') }} &copy; Developed By <a href="https://facebook.com/abdulmajidcse"
+                            target="_blank">Abdul Majid</a> & <a href="https://tutspack.com/" target="_blank">Shahin</a>
+                    </p>
+                </footer>
             </div> <!-- col-9 -->
 
         </div>
-        </div>
+    </div>
     <!-- Scroll Top -->
-    <x-scroll-top/>
+    <x-scroll-top />
 
     <x-page-messenger />
 
@@ -81,5 +91,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     @stack('script')
-  </body>
+</body>
+
 </html>
